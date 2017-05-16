@@ -1,0 +1,14 @@
+<header class="header">
+  <div class="centered">
+    <div class="header__hamb" [ngClass]="{'active': menuOpened}" (click)="changeMenuState()"></div>
+    <nav class="header__nav" [ngClass]="{'active': menuOpened}">
+      <ul>
+        <li><a routerLink="fridge">Lodówka</a></li>
+        <li><a href="">Księga kucharska</a></li>
+        <li><a href="">Profil użytkownika</a></li>
+        <li><a href="">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+  <a class="header__logo" href="">Frigo</a>
+</header>

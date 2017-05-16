@@ -1,26 +1,13 @@
-<!--<h1>-->
-<!--{{title}}-->
-<!--</h1>-->
-<!--<router-outlet></router-outlet>-->
+<fg-layout-header></fg-layout-header>
 
-<header class="header">
-  <div class="centered">
-    <div class="header__hamb" [ngClass]="{'active': menuOpened}" (click)="changeMenuState()"></div>
-    <nav class="header__nav" [ngClass]="{'active': menuOpened}">
-      <ul>
-        <li><a href="">Lodówka</a></li>
-        <li><a href="">Księga kucharska</a></li>
-        <li><a href="">Profil użytkownika</a></li>
-        <li><a href="">Kontakt</a></li>
-      </ul>
-    </nav>
-  </div>
-  <a class="header__logo" href="">Frigo</a>
-</header>
+<h1>
+  {{title}}
+</h1>
+<router-outlet></router-outlet>
+
 
 <div class="contentWrapper">
-
-  <div class="main" style="display: none">
+  <div class="main">
     <img src="../assets/logo-png.png" alt="Frigo" class="main__logo">
     <h2 class="main__slogan title title--underline">Co dziś na obiad?</h2>
     <div class="btnWrapper">

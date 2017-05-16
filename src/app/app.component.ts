@@ -7,14 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title: string;
-  menuOpened: boolean;
-
-  constructor(){
-    this.menuOpened = false;
-  }
-
-  changeMenuState(){
-    this.menuOpened = !this.menuOpened;
-  }
-
 }
