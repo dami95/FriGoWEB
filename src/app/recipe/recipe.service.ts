@@ -14,55 +14,42 @@ export class RecipeService {
         private api: ApiService
     ) { }
 
-    // getRecipe(id): Observable<Recipe> {
-    //     return Observable.of(
-    //       RecipesMock.find((recipe) => {
-    //         return recipe.id === id;
-    //       })
-    //     );
-    // }
-
     getRecipe(id): Observable<Recipe> {
         return this.api.get(
-          endpoints.recipes + '/' + id
-        ).do(recipe => { return Observable.of(recipe)});
+          endpoints.recipes + `/${id}`
+        );
     }
 
     removeNote(id): Observable<string> {
         return this.api.delete(
           endpoints.notes + `/${id}`
-        ).do(status => { return Observable.of(status) })
+        );
     }
 
     editNote(id, editRecipeNote) : Observable<Note> {
         return this.api.put(
-            endpoints.notes,
-            `id=${id}&editRecipeNote=${editRecipeNote}`
-        ).do(note => { return Observable.of(note); })
+            endpoints.notes + `/${id}`,
+            editRecipeNote
+        );
     }
 
     removeComment(id) : Observable<string> {
         return this.api.delete(
             endpoints.comments + `/${id}`
-        ).do(status => {return Observable.of(status)});
+        );
     }
 
     editComment(id, editComment) : Observable<Comment> {
         return this.api.put(
-            endpoints.comments,
-            `id=${id}&editComment=${editComment}`
-        ).do(comment => { return Observable.of(comment); })
+            endpoints.comments + `/${id}`,
+            editComment
+        );
     }
 
     rate(id, rateRecipe) : Observable<number> {
         return this.api.put(
-            endpoints.rate,
-            `id=${id}&rateRecipe=${rateRecipe}`
-        )
-            .do(
-                response => {
-                    return Observable.of(response)
-                }
-            )
+            endpoints.rate + `/${id}`,
+            rateRecipe
+        );
     }
 }

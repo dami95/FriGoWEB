@@ -9,7 +9,7 @@
 
     <textarea *ngIf="isEditing" [(ngModel)]="editModel" name="comment-area" id="comment-area" class="comments__comment-area"></textarea>
 
-    <div class="comments__comment-controls" *ngIf="ifCommentEditable(comment)">
+    <div class="comments__comment-controls" *ngIf="!ifCommentEditable(comment)">
       <span (click)="removeComment()" *ngIf="!isEditing">
           <i class="fa fa-trash"></i>
       </span>

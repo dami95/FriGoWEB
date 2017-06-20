@@ -15,7 +15,7 @@ export class CookbookComponent implements OnInit {
   public tags: Tag[] = [];
   public findRecipeInput: string;
   public findRecipeSelect: string;
-  public loading: string;
+  public loadingMsg: string;
 
   constructor(
     private router: Router,
@@ -24,16 +24,16 @@ export class CookbookComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loading = "Wczytywanie przepisów...";
+    this.loadingMsg = "Wczytywanie przepisów...";
 
     this.cookbook.getRecipes().subscribe(
       recipes => {
-        if(recipes.length === 0) this.loading = "Brak przepisów...";
+        if(recipes.length === 0) this.loadingMsg = "Brak przepisów...";
         this.recipes = recipes;
       },
       error => {
         this.notifier.error('Błąd przy wczytywaniu przepisów...');
-        this.loading = "Bład przy wczytywaniu przepisów...";
+        this.loadingMsg = "Bład przy wczytywaniu przepisów...";
       }
     );
 

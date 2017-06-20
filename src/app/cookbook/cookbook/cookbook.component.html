@@ -21,7 +21,7 @@
                 </div>
             </div>
 
-            <div *ngIf="!recipes.length" class="cookbook__no-recipes">{{ loading }}</div>
+            <div *ngIf="!recipes.length" class="cookbook__no-recipes">{{ loadingMsg }}</div>
             <div *ngIf="recipes.length" class="cookbook__recipes-wrapper">
               <fg-recipe-tile
                 *ngFor="let recipe of recipes | FindRecipeByName: findRecipeInput | FindRecipeByCategory: findRecipeSelect"

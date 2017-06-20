@@ -13,21 +13,11 @@ export class CookbookService {
       private api: ApiService
   ) { }
 
-  // getRecipes(): Observable<Recipe[]> {
-  //   return Observable.of(RecipesMock);
-  // }
-  //
-  // getTags() : Observable<Tag[]> {
-  //   return Observable.of(TagsMock);
-  // }
-
   getRecipes(): Observable<Recipe[]> {
-      return this.api.get(endpoints.recipes)
-          .do(recipes => { return Observable.of(recipes)});
+      return this.api.get(endpoints.recipes);
   }
 
   getTags(): Observable<Tag[]> {
-      return this.api.get(endpoints.tags)
-          .do(tags => { return Observable.of(tags) });
+      return this.api.get(endpoints.tags);
   }
 }

@@ -54,7 +54,7 @@ export class NoteTileComponent implements OnInit {
   }
 
   saveNote() {
-    this.recipes.editNote(this.note.id, this.editModel).subscribe(
+    this.recipes.editNote(this.note.id, { "Note": this.editModel }).subscribe(
       note => {
         this.note = note;
         this.notifier.success('Pomyślnie zapisano zmiany w notatce');
