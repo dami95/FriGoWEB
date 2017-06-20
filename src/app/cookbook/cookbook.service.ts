@@ -9,37 +9,25 @@ import { endpoints } from '../shared/endpoints';
 
 @Injectable()
 export class CookbookService {
-  private _recipes: Recipe[];
-  private _tags: Tag[];
-
   constructor(
       private api: ApiService
   ) { }
 
-  getRecipes(): Observable<Recipe[]> {
-    return Observable.of(RecipesMock);
-  }
-
-  getTags() : Observable<Tag[]> {
-    return Observable.of(TagsMock);
-  }
-
-
   // getRecipes(): Observable<Recipe[]> {
-  //   if(this._recipes){
-  //     return Observable.of(this._recipes);
-  //   }
-  //   else
-  //     return this.api.get(endpoints.ingredients)
-  //         .do(recipes => this._recipes = recipes);
+  //   return Observable.of(RecipesMock);
+  // }
+  //
+  // getTags() : Observable<Tag[]> {
+  //   return Observable.of(TagsMock);
   // }
 
-  // getTags(): Observable<Tag[]> {
-  //   if(this._tags){
-  //     return Observable.of(this._tags);
-  //   }
-  //   else
-  //     return this.api.get(endpoints.tags)
-  //         .do(tags => this._tags = tags)
-  // }
+  getRecipes(): Observable<Recipe[]> {
+      return this.api.get(endpoints.recipes)
+          .do(recipes => { return Observable.of(recipes)});
+  }
+
+  getTags(): Observable<Tag[]> {
+      return this.api.get(endpoints.tags)
+          .do(tags => { return Observable.of(tags) });
+  }
 }

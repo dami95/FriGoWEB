@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { RecipesMock } from '../cookbook/recipes.mock';
 import { endpoints } from '../shared/endpoints';
 import { ApiService } from '../core/api.service';
+import { Note } from '../shared/models/note/note';
 
 import 'rxjs/add/observable/of';
 
@@ -13,26 +14,32 @@ export class RecipeService {
         private api: ApiService
     ) { }
 
-    getRecipe(id): Observable<Recipe> {
-        return Observable.of(
-          RecipesMock.find((recipe) => {
-            return recipe.id === id;
-          })
-        );
-    }
-
-    // removeNote(id): void {
-    //     this.api.delete(endpoints.notes + `/${id}`)
-    //         .do(response => {
-    //             console.log(response);
-    //         })
+    // getRecipe(id): Observable<Recipe> {
+    //     return Observable.of(
+    //       RecipesMock.find((recipe) => {
+    //         return recipe.id === id;
+    //       })
+    //     );
     // }
 
-    // editNote(id, editRecipeNote) : void {
-    //     this.api.put(
-    //         endpoints.notes,
-    //         `id=${id}&editRecipeNote=${editRecipeNote}`
-    //     ).do(response => { console.log(response) })}
+    getRecipe(id): Observable<Recipe> {
+        return this.api.get(
+          endpoints.recipes + '/' + id
+        ).do(recipe => { return Observable.of(recipe)});
+    }
+
+    removeNote(id): Observable<string> {
+        return this.api.delete(
+          endpoints.notes + `/${id}`
+        ).do(status => { return Observable.of(status) })
+    }
+
+    editNote(id, editRecipeNote) : Observable<Note> {
+        return this.api.put(
+            endpoints.notes,
+            `id=${id}&editRecipeNote=${editRecipeNote}`
+        ).do(note => { return Observable.of(note); })
+    }
 
     removeComment(id) : Observable<string> {
         return this.api.delete(

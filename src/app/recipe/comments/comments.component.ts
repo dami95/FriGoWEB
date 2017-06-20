@@ -14,7 +14,7 @@ export class CommentsComponent implements OnInit {
 
 
   constructor() {
-    this.commentsOpen = true;
+    this.commentsOpen = false;
   }
 
   ngOnInit() {
