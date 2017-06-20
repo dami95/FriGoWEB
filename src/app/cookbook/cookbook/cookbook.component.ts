@@ -24,15 +24,16 @@ export class CookbookComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loading = "Wczytywanie...";
+    this.loading = "Wczytywanie przepisów...";
 
     this.cookbook.getRecipes().subscribe(
       recipes => {
-        if(recipes.length === 0) this.loading = "Brak przepisów";
+        if(recipes.length === 0) this.loading = "Brak przepisów...";
         this.recipes = recipes
       },
       error => {
-        this.notifier.error('Błąd przy wczytywaniu przepisów');
+        this.notifier.error('Błąd przy wczytywaniu przepisów...');
+        this.loading = "Bład przy wczytywaniu przepisów...";
       }
     );
 
@@ -40,6 +41,8 @@ export class CookbookComponent implements OnInit {
       tags => this.tags = tags,
       error => console.log(error)
     );
+
+    this.findRecipeSelect = "Wszystkie";
   }
 
   onRecipeClick(id: string) {

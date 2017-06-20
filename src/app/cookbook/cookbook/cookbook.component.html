@@ -9,12 +9,15 @@
                 </div>
                 <div class="cookbook__search">
                     <input type="text" [(ngModel)]="findRecipeInput">
-                    <select [(ngModel)]="findRecipeSelect">
-                        <option value="" selected>Wszystkie</option>
-                        <option *ngFor="let tag of tags" value="{{tag.name}}">
-                            {{ tag.name }}
-                        </option>
-                    </select>
+                    <span class="cookbook__span-select">
+                        <select [(ngModel)]="findRecipeSelect">
+                            <option [value]="">Wszystkie</option>
+                            <option *ngFor="let tag of tags" [value]="tag.name">
+                                {{ tag.name }}
+                            </option>
+                        </select>
+                        <span>&#8595;</span>
+                    </span>
                 </div>
             </div>
 
