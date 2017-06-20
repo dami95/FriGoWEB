@@ -29,7 +29,7 @@ export class CookbookComponent implements OnInit {
     this.cookbook.getRecipes().subscribe(
       recipes => {
         if(recipes.length === 0) this.loading = "Brak przepisów...";
-        this.recipes = recipes
+        this.recipes = recipes;
       },
       error => {
         this.notifier.error('Błąd przy wczytywaniu przepisów...');
@@ -42,7 +42,7 @@ export class CookbookComponent implements OnInit {
       error => console.log(error)
     );
 
-    this.findRecipeSelect = "Wszystkie";
+    this.findRecipeSelect = "";
   }
 
   onRecipeClick(id: string) {
