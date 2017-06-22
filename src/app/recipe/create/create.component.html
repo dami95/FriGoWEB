@@ -1,66 +1,74 @@
 <div class="o-content-wrapper">
     <div class="o-centered">
-        <div class="add-recipe">
-            <div class="add-recipe__recipe-information">
-                <h1 class="o-title o-title--underline">Dodaj przepis</h1>
-                <div class="o-btn-wrapper add-recipe__btn-wrapper">
-                    <a href="#" class="o-btn o-btn--color">Dodaj</a>
-                </div>
-                <input class="add-recipe__recipe-name" type="text" placeholder="Wprowadź nazwę przepisu...">
-                <span class="add-recipe__span-select">
-			<select class="add-recipe__recipe-categories" placeholder="Kategoria przepisu">
-				<option value="default" selected>Kategoria przepisu</option>
-				<option value="">Śniadanie</option>
-				<option value="">Kolacja</option>
-			</select>
-			<span class="add-recipe__styled-arrow">&#8595;</span>
-                </span>
-                <div class="add-recipe__cooking-properties">
-                    <div class="add-recipe__cooking-properties-box">
-                        <label for="add-recipe__cooking-time">Czas przygotowania (min):</label>
-                        <input type="text" class="add-recipe__cooking-time">
+        <form (ngSubmit)="addRecipe()" #addRecipeForm="ngForm">
+            <div class="add-recipe">
+                <div class="add-recipe__recipe-information">
+                    <h1 class="o-title o-title--underline">Dodaj przepis</h1>
+
+                    <div class="o-btn-wrapper add-recipe__btn-wrapper">
+                        <button (click)="addRecipe()" [(disabled)]="!addRecipeForm.form.valid" class="o-btn o-btn--color">Dodaj</button>
                     </div>
-                    <div class="add-recipe__cooking-properties-box">
-                        <label for="add-recipe__cooking-amount">Porcje:</label>
-                        <input type="text" class="add-recipe__cooking-amount">
+
+                    <input [(ngModel)]="recipe.title" name="title" class="add-recipe__recipe-name" type="text" />
+
+                    <span class="add-recipe__span-select">
+                        <select class="add-recipe__recipe-categories" placeholder="Kategoria przepisu">
+                            <option value="default" selected>Kategoria przepisu</option>
+                            <option value="">Śniadanie</option>
+                            <option value="">Kolacja</option>
+                        </select>
+                        <span class="add-recipe__styled-arrow">&#8595;</span>
+                    </span>
+
+                    <div class="add-recipe__cooking-properties">
+                        <div class="add-recipe__cooking-properties-box">
+                            <label for="add-recipe__cooking-time">Czas przygotowania (min):</label>
+                            <input type="text" class="add-recipe__cooking-time">
+                        </div>
+                        <div class="add-recipe__cooking-properties-box">
+                            <label for="add-recipe__cooking-amount">Porcje:</label>
+                            <input type="text" class="add-recipe__cooking-amount">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="add-recipe__ingredients-section">
-                <div class="add-recipe__ingredients">
-                    <h3 class="add-recipe__ingredients-label">Składniki</h3>
-                    <ul class="add-recipe__ingredients-add-list">
-                        <li class="add-recipe__ingredient-add">
-                            <div class="add-recipe__ingredient-add-box">
-                                <label for="add-recipe__add-ingredient-id">Nazwa:</label>
-                                <input type="text" class="add-recipe__add-ingredient-id">
-                            </div>
-                            <div class="add-recipe__ingredient-add-box">
-                                <label for="add-recipe__add-ingredient-amount">Ilość:</label>
-                                <input type="text" class="add-recipe__add-ingredient-amount">
-                            </div>
-                            <div class="add-recipe__ingredient-add-buttons">
-                                <button class="add-recipe__ingredient-btn ingredient-add-btn">
-                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                </button>
-                                <button class="add-recipe__ingredient-btn ingredient-remove-btn">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                </button>
-                            </div>
-                        </li>
-                    </ul>
+                <div class="add-recipe__ingredients-section">
+                    <div class="add-recipe__ingredients">
+                        <h3 class="add-recipe__ingredients-label">Składniki</h3>
+                        <ul class="add-recipe__ingredients-add-list">
+                            <li class="add-recipe__ingredient-add">
+                                <div class="add-recipe__ingredient-add-box">
+                                    <label for="add-recipe__add-ingredient-id">Nazwa:</label>
+                                    <input type="text" class="add-recipe__add-ingredient-id">
+                                </div>
+                                <div class="add-recipe__ingredient-add-box">
+                                    <label for="add-recipe__add-ingredient-amount">Ilość:</label>
+                                    <input type="text" class="add-recipe__add-ingredient-amount">
+                                </div>
+                                <div class="add-recipe__ingredient-add-buttons">
+                                    <button class="add-recipe__ingredient-btn ingredient-add-btn">
+                                        <i class="fa fa-plus" aria-hidden="true"></i>
+                                    </button>
+                                    <button class="add-recipe__ingredient-btn ingredient-remove-btn">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="add-recipe__photo-wrapper">
+                        <input type="file" class="add-recipe__photo">
+                    </div>
                 </div>
-                <div class="add-recipe__photo-wrapper">
-                    <input type="file" class="add-recipe__photo">
+                <div class="add-recipe__description-wrapper">
+                    <h3>Opis</h3>
+                    <textarea class="add-recipe__description" [(ngModel)]="recipe.description" required></textarea>
                 </div>
             </div>
-            <div class="add-recipe__description-wrapper">
-                <h3>Opis</h3>
-                <textarea class="add-recipe__description"></textarea>
+            <div class="add-recipe__btn-wrapper-bottom">
+                <button (click)="addRecipe()" [(disabled)]="!addRecipeForm.form.valid" class="o-btn o-btn--color">Dodaj</button>
             </div>
-        </div>
-        <div class="add-recipe__btn-wrapper-bottom">
-            <a href="#" class="o-btn o-btn--color">Dodaj</a>
-        </div>
+        </form>
+
+        {{ recipe | json }}
     </div>
 </div>

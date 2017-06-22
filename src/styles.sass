@@ -231,11 +231,23 @@ button
     color: $colorAccent
 
   &__input
+    box-sizing: border-box;
     font-family: $fontMain
+    font-size: 15px;
+    height: 37px;
+    line-height: 37px;
+    color: grey;
+    border: 0;
+    background: #FFF
+    padding: 5px
     @extend  .u-mark-validation
 
   &__label
     margin-right: 15px
+    color: #666;
+    font-size: 18px;
+    display: inline-block;
+    line-height: 37px;
 
   &__hiddenSubmit
     position: absolute
