@@ -210,6 +210,15 @@ export const RecipesMock: Recipe[] = [
         }
       }
     ],
+    "notes": [
+      {
+        "id": "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "note": "Dolore deserunt tempor magna veniam aliquip velit. Esse consequat occaecat cillum ullamco id et qui dolor do. Dolore in mollit occaecat sint in aute voluptate elit elit mollit. Magna consectetur commodo veniam anim esse minim occaecat do adipisicing ullamco mollit. Duis aute officia magna voluptate est nulla voluptate.\r\n",
+        "recipeId":  "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "userId":  "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "createdAt": new Date()
+      }
+    ],
     "tags": [
       {
         "name": "Podwieczorek"
@@ -480,6 +489,15 @@ export const RecipesMock: Recipe[] = [
           "title": "fugiat anim",
           "id": "67dbd23d-2b19-44ca-9007-05dc72c132ee"
         }
+      }
+    ],
+    "notes": [
+      {
+        "id": "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "note": "Dolore deserunt tempor magna veniam aliquip velit. Esse consequat occaecat cillum ullamco id et qui dolor do. Dolore in mollit occaecat sint in aute voluptate elit elit mollit. Magna consectetur commodo veniam anim esse minim occaecat do adipisicing ullamco mollit. Duis aute officia magna voluptate est nulla voluptate.\r\n",
+        "recipeId":  "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "userId":  "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "createdAt": new Date()
       }
     ],
     "tags": [
@@ -754,6 +772,15 @@ export const RecipesMock: Recipe[] = [
         }
       }
     ],
+    "notes": [
+      {
+        "id": "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "note": "Dolore deserunt tempor magna veniam aliquip velit. Esse consequat occaecat cillum ullamco id et qui dolor do. Dolore in mollit occaecat sint in aute voluptate elit elit mollit. Magna consectetur commodo veniam anim esse minim occaecat do adipisicing ullamco mollit. Duis aute officia magna voluptate est nulla voluptate.\r\n",
+        "recipeId":  "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "userId":  "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "createdAt": new Date()
+      }
+    ],
     "tags": [
       {
         "name": "Nic"
@@ -1024,6 +1051,15 @@ export const RecipesMock: Recipe[] = [
           "title": "tempor nisi",
           "id": "c1e78193-8b5d-499b-8c40-8ade115b8b57"
         }
+      }
+    ],
+    "notes": [
+      {
+        "id": "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "note": "Dolore deserunt tempor magna veniam aliquip velit. Esse consequat occaecat cillum ullamco id et qui dolor do. Dolore in mollit occaecat sint in aute voluptate elit elit mollit. Magna consectetur commodo veniam anim esse minim occaecat do adipisicing ullamco mollit. Duis aute officia magna voluptate est nulla voluptate.\r\n",
+        "recipeId":  "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "userId":  "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "createdAt": new Date()
       }
     ],
     "tags": [
@@ -1298,6 +1334,15 @@ export const RecipesMock: Recipe[] = [
         }
       }
     ],
+    "notes": [
+      {
+        "id": "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "note": "Dolore deserunt tempor magna veniam aliquip velit. Esse consequat occaecat cillum ullamco id et qui dolor do. Dolore in mollit occaecat sint in aute voluptate elit elit mollit. Magna consectetur commodo veniam anim esse minim occaecat do adipisicing ullamco mollit. Duis aute officia magna voluptate est nulla voluptate.\r\n",
+        "recipeId":  "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "userId":  "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "createdAt": new Date()
+      }
+    ],
     "tags": [
       {
         "name": "Podwieczorek"
@@ -1568,6 +1613,15 @@ export const RecipesMock: Recipe[] = [
           "title": "enim laborum",
           "id": "f2da3552-0bd5-4df2-8c1e-3c1d3dc89817"
         }
+      }
+    ],
+    "notes": [
+      {
+        "id": "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "note": "Dolore deserunt tempor magna veniam aliquip velit. Esse consequat occaecat cillum ullamco id et qui dolor do. Dolore in mollit occaecat sint in aute voluptate elit elit mollit. Magna consectetur commodo veniam anim esse minim occaecat do adipisicing ullamco mollit. Duis aute officia magna voluptate est nulla voluptate.\r\n",
+        "recipeId":  "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "userId":  "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "createdAt": new Date()
       }
     ],
     "tags": [
@@ -1842,6 +1896,15 @@ export const RecipesMock: Recipe[] = [
         }
       }
     ],
+    "notes": [
+      {
+        "id": "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "note": "Dolore deserunt tempor magna veniam aliquip velit. Esse consequat occaecat cillum ullamco id et qui dolor do. Dolore in mollit occaecat sint in aute voluptate elit elit mollit. Magna consectetur commodo veniam anim esse minim occaecat do adipisicing ullamco mollit. Duis aute officia magna voluptate est nulla voluptate.\r\n",
+        "recipeId":  "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "userId":  "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "createdAt": new Date()
+      }
+    ],
     "tags": [
       {
         "name": "Śniadanie"
@@ -2112,6 +2175,15 @@ export const RecipesMock: Recipe[] = [
           "title": "veniam labore",
           "id": "57a3ca96-b8b1-42e9-92ce-b9ee9bc09b59"
         }
+      }
+    ],
+    "notes": [
+      {
+        "id": "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "note": "Dolore deserunt tempor magna veniam aliquip velit. Esse consequat occaecat cillum ullamco id et qui dolor do. Dolore in mollit occaecat sint in aute voluptate elit elit mollit. Magna consectetur commodo veniam anim esse minim occaecat do adipisicing ullamco mollit. Duis aute officia magna voluptate est nulla voluptate.\r\n",
+        "recipeId":  "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "userId":  "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "createdAt": new Date()
       }
     ],
     "tags": [
@@ -2386,6 +2458,15 @@ export const RecipesMock: Recipe[] = [
         }
       }
     ],
+    "notes": [
+      {
+        "id": "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "note": "Dolore deserunt tempor magna veniam aliquip velit. Esse consequat occaecat cillum ullamco id et qui dolor do. Dolore in mollit occaecat sint in aute voluptate elit elit mollit. Magna consectetur commodo veniam anim esse minim occaecat do adipisicing ullamco mollit. Duis aute officia magna voluptate est nulla voluptate.\r\n",
+        "recipeId":  "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "userId":  "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "createdAt": new Date()
+      }
+    ],
     "tags": [
       {
         "name": "Przekąska"
@@ -2656,6 +2737,15 @@ export const RecipesMock: Recipe[] = [
           "title": "labore culpa",
           "id": "90465a7a-cd3b-45b9-be5e-b80a46cb69ee"
         }
+      }
+    ],
+    "notes": [
+      {
+        "id": "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "note": "Dolore deserunt tempor magna veniam aliquip velit. Esse consequat occaecat cillum ullamco id et qui dolor do. Dolore in mollit occaecat sint in aute voluptate elit elit mollit. Magna consectetur commodo veniam anim esse minim occaecat do adipisicing ullamco mollit. Duis aute officia magna voluptate est nulla voluptate.\r\n",
+        "recipeId":  "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "userId":  "6d056f1d-c458-4a37-876b-2e9e6f931e3d",
+        "createdAt": new Date()
       }
     ],
     "tags": [

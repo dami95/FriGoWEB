@@ -1,22 +1,22 @@
-<!--<div class="notes__single-note">-->
-    <!--<div class="notes__note-content" *ngIf="!isEditing">-->
-        <!--{{ note.Note }}-->
-    <!--</div>-->
+<div class="notes__single-note">
+    <div class="notes__note-content" *ngIf="!isEditing">
+        {{ note.note }}
+    </div>
 
-    <!--<textarea *ngIf="isEditing" [(ngModel)]="editModel" name="note-area" id="note-area" class="notes_note-area"></textarea>-->
+    <textarea *ngIf="isEditing" [(ngModel)]="editModel" name="note-area" id="note-area" class="notes_note-area"></textarea>
 
-    <!--<div class="notes__note-controls" *ngIf="ifNotesEditable()">-->
-        <!--<span (click)="removeNote()" *ngIf="!isEditing">-->
-          <!--<i class="fa fa-trash"></i>-->
-      <!--</span>-->
-        <!--<span (click)="editNote()" *ngIf="!isEditing">-->
-          <!--<i class="fa fa-pencil"></i>-->
-      <!--</span>-->
-        <!--<span (click)="saveNote()" *ngIf="isEditing">-->
-          <!--<i class="fa fa-floppy-o"></i>-->
-      <!--</span>-->
-        <!--<span (click)="cancelEditing()" *ngIf="isEditing">-->
-          <!--<i class="fa fa-ban"></i>-->
-      <!--</span>-->
-    <!--</div>-->
-<!--</div>-->
+    <div class="notes__note-controls" *ngIf="ifNotesEditable()">
+        <span (click)="removeNote()" *ngIf="!isEditing">
+          <i class="fa fa-trash"></i>
+      </span>
+        <span (click)="editNote()" *ngIf="!isEditing">
+          <i class="fa fa-pencil"></i>
+      </span>
+        <span (click)="saveNote()" *ngIf="isEditing">
+          <i class="fa fa-floppy-o"></i>
+      </span>
+        <span (click)="cancelEditing()" *ngIf="isEditing">
+          <i class="fa fa-ban"></i>
+      </span>
+    </div>
+</div>

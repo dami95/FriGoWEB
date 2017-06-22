@@ -14,18 +14,39 @@
     flex-wrap: wrap
 
     input
-      min-width: 300px
+      min-width: 200px
       flex: 2
       height: 36px
       font-family: $fontMain
       color: $colorAccent
-      font-size: 26px
+      font-size: 20px
       box-sizing: border-box
 
+  &__span-select
+    flex: 1
+    height: 36px
+    position: relative
+    display: block
+    min-width: 200px
+
     select
-      min-width: 200px
+      height: 100%
+      width: 100%
+      font-family: $fontMain
+      color: $colorAccent
+      font-size: 20px
+
+    > span
+      display: flex
+      justify-content: center
+      align-items: center
+      position: absolute
+      width: 36px
       height: 36px
-      flex: 1
+      color: #fff
+      right: 0
+      top: 0
+      background-color: grey
 
 
   &__recipes-wrapper

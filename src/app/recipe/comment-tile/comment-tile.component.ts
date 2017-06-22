@@ -62,7 +62,7 @@ export class CommentTileComponent implements OnInit {
   }
 
   saveComment() {
-    this.recipes.editComment(this.comment.id, this.editModel).subscribe(
+    this.recipes.editComment(this.comment.id, { "Text": this.editModel }).subscribe(
         comment => {
           this.comment = comment;
           this.notifier.success('Pomyślnie zapisano zmiany w komentarzu');

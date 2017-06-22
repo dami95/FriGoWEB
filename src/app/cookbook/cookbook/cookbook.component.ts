@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Recipe } from '../../shared/models/recipe/recipe';
 import { Tag } from '../../shared/models/tag';
 import { CookbookService } from '../cookbook.service';
+import { NotifierService } from "../../core/notifier.service";
 
 @Component({
   selector: 'fg-cookbook',
@@ -14,22 +15,34 @@ export class CookbookComponent implements OnInit {
   public tags: Tag[] = [];
   public findRecipeInput: string;
   public findRecipeSelect: string;
+  public loadingMsg: string;
 
   constructor(
     private router: Router,
-    private cookbook: CookbookService
+    private cookbook: CookbookService,
+    private notifier: NotifierService
   ) { }
 
   ngOnInit() {
+    this.loadingMsg = "Wczytywanie przepisów...";
+
     this.cookbook.getRecipes().subscribe(
-      recipes => this.recipes = recipes,
-      error => console.log(error)//TODO
+      recipes => {
+        if(recipes.length === 0) this.loadingMsg = "Brak przepisów...";
+        this.recipes = recipes;
+      },
+      error => {
+        this.notifier.error('Błąd przy wczytywaniu przepisów...');
+        this.loadingMsg = "Bład przy wczytywaniu przepisów...";
+      }
     );
 
     this.cookbook.getTags().subscribe(
       tags => this.tags = tags,
       error => console.log(error)
     );
+
+    this.findRecipeSelect = "";
   }
 
   onRecipeClick(id: string) {
