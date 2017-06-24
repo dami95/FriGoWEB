@@ -4,9 +4,12 @@
   </h2>
   <div class="notes__list dropdown__list" [ngClass]="{'open': notesOpen }">
     <div *ngIf="!recipe.notes">Brak notatek...</div>
-    <!--<fg-note-tile-->
-            <!--*ngFor="let note of recipe.notes; let i = index"-->
-    <!--&gt;</fg-note-tile>-->
+    <fg-note-tile
+            *ngFor="let note of recipe.notes; let i = index"
+            [note] = 'note'
+            [recipe] = 'recipe'
+            [noteIndex] = 'i'
+    ></fg-note-tile>
 
   </div>
 </div>

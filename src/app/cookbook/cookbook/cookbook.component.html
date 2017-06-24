@@ -9,16 +9,19 @@
                 </div>
                 <div class="cookbook__search">
                     <input type="text" [(ngModel)]="findRecipeInput">
-                    <select [(ngModel)]="findRecipeSelect">
-                        <option value="" selected>Wszystkie</option>
-                        <option *ngFor="let tag of tags" value="{{tag.name}}">
-                            {{ tag.name }}
-                        </option>
-                    </select>
+                    <span class="cookbook__span-select">
+                        <select [(ngModel)]="findRecipeSelect">
+                            <option value="">Wszystkie</option>
+                            <option *ngFor="let tag of tags" [value]="tag.name">
+                                {{ tag.name }}
+                            </option>
+                        </select>
+                        <span>&#8595;</span>
+                    </span>
                 </div>
             </div>
 
-            <div *ngIf="!recipes.length" class="cookbook__no-recipes">Brak przepisów...</div>
+            <div *ngIf="!recipes.length" class="cookbook__no-recipes">{{ loadingMsg }}</div>
             <div *ngIf="recipes.length" class="cookbook__recipes-wrapper">
               <fg-recipe-tile
                 *ngFor="let recipe of recipes | FindRecipeByName: findRecipeInput | FindRecipeByCategory: findRecipeSelect"

@@ -69,7 +69,7 @@ export class SingleRecipeComponent{
             let rating = i+1;
             let self = this;
 
-            this.recipes.rate(this.recipe.id, rating).subscribe(
+            this.recipes.rate(this.recipe.id, { "Rate": rating }).subscribe(
                 response => {
                     self.notifier.success('Dziękujemy za ocenę przepisu');
                     self.userRating = [

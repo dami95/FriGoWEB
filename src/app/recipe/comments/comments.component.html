@@ -3,7 +3,7 @@
     Komentarze <i class="fa fa-caret-up" [ngClass]="{'open': commentsOpen }"></i>
   </h2>
   <div class="comments__list dropdown__list" [ngClass]="{'open': commentsOpen }">
-
+    <div *ngIf="!recipe.comments">Brak komentarzy...</div>
     <fg-comment-tile
       *ngFor="let comment of recipe.comments; let i = index"
       [comment] = "comment"
