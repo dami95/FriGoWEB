@@ -11,4 +11,4 @@ export const endpoints = {
   comments: 'Comment',
   rate: 'Rate',
   image: 'Image'
-};
+}

@@ -24,7 +24,7 @@
                     <div class="add-recipe__ingredients">
                         <h3 class="add-recipe__ingredients-label">Składniki</h3>
                         <ul class="add-recipe__ingredients-add-list">
-                            <li class="add-recipe__ingredient-add" *ngFor="let item of recipe.createIngredientQuantities; let in = indextrackBy:trackByIndex">
+                            <li class="add-recipe__ingredient-add" *ngFor="let item of recipe.createIngredientQuantities; let in = index;trackBy:trackByIndex">
                                 <div class="add-recipe__ingredient-add-box">
                                     <label for="add-recipe__add-ingredient-id-{{ in }}">Nazwa:</label>
                                     <select name="add-recipe__add-ingredient-id-{{ in }}" id="add-recipe__add-ingredient-id-{{ in }}" class="add-recipe__add-ingredient-id u-mark-validation"
@@ -40,10 +40,10 @@
                                     <span *ngIf="recipe.createIngredientQuantities[in].ingredient">{{ recipe.createIngredientQuantities[in].ingredient.unit.name }}</span>
                                 </div>
                                 <div class="add-recipe__ingredient-add-buttons">
-                                    <button (click)="addIngredient(in+1)" class="add-recipe__ingredient-btn ingredient-add-btn">
+                                    <button (click)="addIngredient(in+1);" class="add-recipe__ingredient-btn ingredient-add-btn">
                                         <i class="fa fa-plus" aria-hidden="true"></i>
                                     </button>
-                                    <button (click)="removeIngredient(in)" class="add-recipe__ingredient-btn ingredient-remove-btn">
+                                    <button (click)="removeIngredient(in);" class="add-recipe__ingredient-btn ingredient-remove-btn">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </button>
                                 </div>
