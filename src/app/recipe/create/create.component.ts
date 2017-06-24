@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NotifierService } from "../../core/notifier.service";
 import { CreateRecipe } from '../../shared/models/recipe/new-recipe';
 import { RecipeService } from '../recipe.service';
+import { IngredientQuantity } from '../../shared/models/ingredient-quantity/ingredient-quantity';
 
 @Component({
   selector: 'fg-create',
@@ -17,9 +18,29 @@ export class CreateComponent {
   ) { }
 
   ngOnInit() {
+    console.log(this.recipe);
+    this.recipe.createIngredientQuantities = [];
+    this.recipe.createIngredientQuantities.push(new IngredientQuantity());
+  }
+
+  addIngredient(ingredient = undefined) {
+    let i = 0;
+    if (typeof ingredient !== "undefined") {
+      i = this.recipe.createIngredientQuantities.indexOf(ingredient);
+    }
+    this.recipe.createIngredientQuantities.splice(i, 0, new IngredientQuantity());
+  }
+
+  removeIngredient(ingredient) {
+    let i = this.recipe.createIngredientQuantities.indexOf(ingredient);
+    this.recipe.createIngredientQuantities.splice(i, 1);
+
+    if (this.recipe.createIngredientQuantities.length === 0) {
+      this.addIngredient();
+    }
   }
 
   addRecipe() {
-    //console.log(this.createRecipe);
+    console.log(this.recipe);
   }
 }
