@@ -1,43 +1,49 @@
 <div class="o-content-wrapper">
     <div class="o-centered">
-        <form (ngSubmit)="addRecipe()" #addRecipeForm="ngForm">
+        <form (submit)="addRecipe()" #addRecipeForm="ngForm">
             <div class="add-recipe">
                 <div class="add-recipe__recipe-information">
                     <h1 class="o-title o-title--underline">Dodaj przepis</h1>
 
                     <div class="o-btn-wrapper add-recipe__btn-wrapper">
-                        <button (click)="addRecipe()" [(disabled)]="!addRecipeForm.form.valid" class="o-btn o-btn--color">Dodaj</button>
+                        <button [(disabled)]="!addRecipeForm.form.valid" class="o-btn o-btn--color">Dodaj</button>
                     </div>
 
-                    <input [(ngModel)]="recipe.title" name="title" class="add-recipe__recipe-name" type="text" />
+                    <input [(ngModel)]="recipe.title" name="title" class="o-form__input add-recipe__recipe-name" type="text" required placeholder="Nazwa">
 
                     <span class="add-recipe__span-select">
-                        <select class="add-recipe__recipe-categories" placeholder="Kategoria przepisu">
-                            <option value="default" selected>Kategoria przepisu</option>
-                            <option value="">Śniadanie</option>
-                            <option value="">Kolacja</option>
+                        <select name="add-recipe__recipe-categories" id="add-recipe__recipe-categories" class="add-recipe__recipe-categories u-mark-validation"
+                                [(ngModel)]="recipe.tags[0]" required placeholder="Kategoria przepisu">
+                            <option *ngFor="let item of tags" [ngValue]="item">{{ item.name }}</option>
                         </select>
                         <span class="add-recipe__styled-arrow">&#8595;</span>
                     </span>
                 </div>
+
                 <div class="add-recipe__ingredients-section">
                     <div class="add-recipe__ingredients">
                         <h3 class="add-recipe__ingredients-label">Składniki</h3>
                         <ul class="add-recipe__ingredients-add-list">
-                            <li class="add-recipe__ingredient-add" *ngFor="let item of recipe.createIngredientQuantities">
+                            <li class="add-recipe__ingredient-add" *ngFor="let item of recipe.createIngredientQuantities; let in = indextrackBy:trackByIndex">
                                 <div class="add-recipe__ingredient-add-box">
-                                    <label for="add-recipe__add-ingredient-id">Nazwa:</label>
-                                    <input type="text" class="add-recipe__add-ingredient-id" name="add-recipe__add-ingredient-id" [(ngModel)]="item.id">
+                                    <label for="add-recipe__add-ingredient-id-{{ in }}">Nazwa:</label>
+                                    <select name="add-recipe__add-ingredient-id-{{ in }}" id="add-recipe__add-ingredient-id-{{ in }}" class="add-recipe__add-ingredient-id u-mark-validation"
+                                            [(ngModel)]="recipe.createIngredientQuantities[in].ingredient" required>
+                                        <option *ngFor="let item of ingredients" [ngValue]="item">{{item.name}}</option>
+                                    </select>
+
+                                    <!--<input type="text" class="add-recipe__add-ingredient-id" name="add-recipe__add-ingredient-id-{{ in }}" [(ngModel)]="recipe.createIngredientQuantities[in].id" >-->
                                 </div>
-                                <div class="add-recipe__ingredient-add-box">
-                                    <label for="add-recipe__add-ingredient-amount">Ilość:</label>
-                                    <input type="number" class="add-recipe__add-ingredient-amount" name="add-recipe__add-ingredient-amount" [(ngModel)]="item.quantity">
+                                <div class="add-recipe__ingredient-add-box add-recipe__ingredient-add-box--middle">
+                                    <label for="add-recipe__add-ingredient-amount-{{ in }}">Ilość:</label>
+                                    <input type="number" class="add-recipe__add-ingredient-amount o-form__input" id="add-recipe__add-ingredient-amount-{{ in }}" name="add-recipe__add-ingredient-amount-{{ in }}" [(ngModel)]="recipe.createIngredientQuantities[in].quantity" required min="0">
+                                    <span *ngIf="recipe.createIngredientQuantities[in].ingredient">{{ recipe.createIngredientQuantities[in].ingredient.unit.name }}</span>
                                 </div>
                                 <div class="add-recipe__ingredient-add-buttons">
-                                    <button (click)="addIngredient(ingredient);" class="add-recipe__ingredient-btn ingredient-add-btn">
+                                    <button (click)="addIngredient(in+1)" class="add-recipe__ingredient-btn ingredient-add-btn">
                                         <i class="fa fa-plus" aria-hidden="true"></i>
                                     </button>
-                                    <button (click)="removeIngredient(ingredient);" class="add-recipe__ingredient-btn ingredient-remove-btn">
+                                    <button (click)="removeIngredient(in)" class="add-recipe__ingredient-btn ingredient-remove-btn">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </button>
                                 </div>
@@ -45,19 +51,25 @@
                         </ul>
                     </div>
                     <div class="add-recipe__photo-wrapper">
-                        <input type="file" class="add-recipe__photo">
+
+                        <div *ngIf="!recipe.imageUrl">
+                            <image-upload (onFileUploadFinish)="imageUploaded($event)" [url]="uploadUrl" [max]="1" [headers]="uploadHeaders" [buttonCaption]="'Wybierz zdjęcie'" [dropBoxMessage]="'Upuść zdjęcie tutaj'"></image-upload>
+                            <!--https://www.npmjs.com/package/angular2-image-upload-->
+                        </div>
+                        <div *ngIf="recipe.imageUrl">
+                            <img src="{{ recipe.imageUrl }}" alt="Zdjęcie przepisu">
+                        </div>
                     </div>
                 </div>
                 <div class="add-recipe__description-wrapper">
                     <h3>Opis</h3>
-                    <textarea class="add-recipe__description" name="description" [(ngModel)]="recipe.description" required></textarea>
+                    <textarea class="add-recipe__description u-mark-validation" name="description" [(ngModel)]="recipe.description" required></textarea>
                 </div>
             </div>
             <div class="add-recipe__btn-wrapper-bottom">
-                <button (click)="addRecipe()" [(disabled)]="!addRecipeForm.form.valid" class="o-btn o-btn--color">Dodaj</button>
+                <button [(disabled)]="!addRecipeForm.form.valid" class="o-btn o-btn--color">Dodaj</button>
             </div>
-        </form>
 
-        {{ recipe | json }}
+        </form>
     </div>
 </div>

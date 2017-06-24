@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Recipe } from '../shared/models/recipe/recipe';
+import { CreateRecipe } from '../shared/models/recipe/new-recipe';
 import { Observable } from 'rxjs/Observable';
 import { RecipesMock } from '../cookbook/recipes.mock';
 import { endpoints } from '../shared/endpoints';
@@ -13,6 +14,13 @@ export class RecipeService {
     constructor(
         private api: ApiService
     ) { }
+
+    createRecipe(newRecipe): Observable<CreateRecipe> {
+        return this.api.post(
+          endpoints.recipes,
+          newRecipe
+        );
+    }
 
     getRecipe(id): Observable<Recipe> {
         return this.api.get(
@@ -51,5 +59,9 @@ export class RecipeService {
             endpoints.rate + `/${id}`,
             rateRecipe
         );
+    }
+
+    uploadImage(image) {
+
     }
 }
