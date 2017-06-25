@@ -36,6 +36,7 @@
           <ul *ngIf="recipe.ingredientQuantities">
             <li *ngFor="let ingredientQuantity of recipe.ingredientQuantities">
               <span>{{ingredientQuantity.ingredient.name}}</span>{{ingredientQuantity.quantity}}
+              ({{ingredientQuantity.ingredient.unit.name}})
             </li>
           </ul>
         </div>
