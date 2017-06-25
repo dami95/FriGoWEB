@@ -102,7 +102,7 @@ export class ApiService {
       for (let originalKey in object) {
         newKey = (originalKey.charAt(0).toLowerCase() + originalKey.slice(1) || originalKey).toString();
         objectValue = object[originalKey];
-        if(objectValue !== null && objectValue.constructor === Object) {
+        if(typeof objectValue === "object") {
           objectValue = this.toCamel(objectValue);
         }
         newObject[newKey] = objectValue;
