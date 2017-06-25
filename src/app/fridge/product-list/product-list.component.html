@@ -1,4 +1,6 @@
-<div class="icons"><i class='fa fa-trash-o' (click)="delete()"></i> <i class='fa fa-pencil'></i></div>
+<div class="icons">
+  <i class='fa fa-trash-o' (click)="delete()"></i>
+</div>
  <ngx-datatable
     class="material"
     [rows]="rows"
@@ -21,6 +23,9 @@
     [headerCheckboxable]="true"
     [checkboxable]="true"
     name="">
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <i class='fa fa-pencil' (click)="edit(row)"></i>
+    </ng-template>
   </ngx-datatable-column>
    <ngx-datatable-column name="Nazwa produktu" prop="name" [width]="650" style="text-align: center">
      <ng-template let-row="row" ngx-datatable-cell-template>

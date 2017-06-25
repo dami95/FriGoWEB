@@ -1,0 +1,32 @@
+<div class="new-product__background" [ngClass]="{'visible': visible}" (click)="backgroundClick($event)" #background>
+  <div class="new-product__popup" *ngIf="ingredientQuantity">
+    <span class="o-title o-title--underline">Edytuj produkt</span>
+      <div class="form-row">
+        <form (ngSubmit)="edit()" #editProductForm="ngForm">
+          <div class="input-row input-row">
+          <label for="ingredient">nazwa</label>
+          <div class="new-product new-product__product-name u-mark-validation">
+            {{ingredient?.name}}
+          </div>
+          </div>
+          <div class="input-row">
+            <label for="quantity">ilość</label>
+            <input name="quantity" type="number"
+              class="new-product new-product__product-quantity u-mark-validation"
+              [(ngModel)]="ingredientQuantity.quantity" required>
+            <span class="unit-name" *ngIf="ingredient">({{ingredient?.unit?.name}})</span>
+          </div>
+          <div class="input-row">
+            <label for="description">opis</label>
+            <input name="description" class="new-product u-mark-validation" type="text"
+              [(ngModel)]="ingredientQuantity.description" required>
+          </div>
+          <div class="o-btn-wrapper">
+            <button type="submit" class="o-btn o-btn--color"
+              [disabled]="!editProductForm.form.valid">Edytuj</button>
+            <button type="button" (click)="close()" class="o-btn">Wróć</button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>

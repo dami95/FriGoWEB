@@ -15,7 +15,14 @@ import { UnitService } from './unit.service';
   imports:      [ SharedModule, HttpModule ],
   declarations: [ ],
   exports:      [ ],
-  providers:    [ LoggedInGuard, NotifierService, ApiService, UserService, IngredientService, UnitService ]
+  providers:    [
+    LoggedInGuard,
+    NotifierService,
+    ApiService,
+    UserService, 
+    IngredientService,
+    UnitService
+  ]
 })
 export class CoreModule {
 

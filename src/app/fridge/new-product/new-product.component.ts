@@ -16,7 +16,7 @@ import { NotifierService } from '../../core/notifier.service';
 @Component({
   selector: 'fg-new-product',
   templateUrl: './new-product.component.html',
-  styleUrls: ['./new-product.component.sass']
+  styleUrls: ['../product.component.sass']
 })
 export class NewProductComponent implements OnInit {
   ingredients: Ingredient[] = [];
