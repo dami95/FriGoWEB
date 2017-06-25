@@ -10,57 +10,57 @@ import 'rxjs/add/observable/of';
 
 @Injectable()
 export class RecipeService {
-    constructor(
-        private api: ApiService
-    ) { }
+  constructor(
+    private api: ApiService
+  ) { }
 
-    createRecipe(newRecipe): Observable<CreateRecipe> {
-        return this.api.post(
-          endpoints.recipes,
-          newRecipe
-        );
-    }
+  createRecipe(newRecipe): Observable<CreateRecipe> {
+    return this.api.post(
+      endpoints.recipes,
+      newRecipe
+    );
+  }
 
-    getRecipe(id): Observable<Recipe> {
-        return this.api.get(
-          endpoints.recipes + `/${id}`
-        );
-    }
+  getRecipe(id): Observable<Recipe> {
+    return this.api.get(
+      endpoints.recipes + `/${id}`
+    );
+  }
 
-    removeNote(id): Observable<string> {
-        return this.api.delete(
-          endpoints.notes + `/${id}`
-        );
-    }
+  removeNote(id): Observable<string> {
+    return this.api.delete(
+      endpoints.notes + `/${id}`
+    );
+  }
 
-    editNote(id, editRecipeNote) : Observable<Note> {
-        return this.api.put(
-            endpoints.notes + `/${id}`,
-            editRecipeNote
-        );
-    }
+  editNote(id, editRecipeNote) : Observable<Note> {
+    return this.api.put(
+      endpoints.notes + `/${id}`,
+      editRecipeNote
+    );
+  }
 
-    removeComment(id) : Observable<string> {
-        return this.api.delete(
-            endpoints.comments + `/${id}`
-        );
-    }
+  removeComment(id) : Observable<string> {
+    return this.api.delete(
+      endpoints.comments + `/${id}`
+    );
+  }
 
-    editComment(id, editComment) : Observable<Comment> {
-        return this.api.put(
-            endpoints.comments + `/${id}`,
-            editComment
-        );
-    }
+  editComment(id, editComment) : Observable<Comment> {
+    return this.api.put(
+      endpoints.comments + `/${id}`,
+      editComment
+    );
+  }
 
-    rate(id, rateRecipe) : Observable<number> {
-        return this.api.put(
-            endpoints.rate + `?recipeId=${id}`,
-            rateRecipe
-        );
-    }
+  rate(id, rateRecipe) : Observable<number> {
+    return this.api.put(
+      endpoints.rate + `?recipeId=${id}`,
+      rateRecipe
+    );
+  }
 
-    uploadImage(image) {
+  uploadImage(image) {
 
-    }
+  }
 }
