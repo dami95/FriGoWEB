@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from '../../core/user.service';
 
 @Component({
   selector: 'fg-header',
@@ -8,11 +9,15 @@ import { Component } from '@angular/core';
 export class HeaderComponent {
   menuOpened: boolean;
 
-  constructor(){
+  constructor(private userService: UserService) {
     this.menuOpened = false;
   }
 
   changeMenuState(){
     this.menuOpened = !this.menuOpened;
+  }
+
+  get isLoggedIn() {
+    return this.userService.isLoggedIn();
   }
 }

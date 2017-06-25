@@ -3,9 +3,11 @@
     <div class="header__hamb" [ngClass]="{'active': menuOpened}" (click)="changeMenuState()"></div>
     <nav class="header__nav" [ngClass]="{'active': menuOpened}">
       <ul>
-        <li><a routerLink="/fridge">Lodówka</a></li>
+        <li *ngIf="isLoggedIn"><a routerLink="/fridge">Lodówka</a></li>
         <li><a routerLink="/cookbook">Księga kucharska</a></li>
-        <li><a routerLink="/account">Profil użytkownika</a></li>
+        <li *ngIf="!isLoggedIn"><a routerLink="/account/login">Zaloguj</a></li>
+        <li *ngIf="!isLoggedIn"><a routerLink="/account/register">Zarejestruj</a></li>
+        <li *ngIf="isLoggedIn"><a routerLink="/account">Profil użytkownika</a></li>
         <li><a routerLink="/contact">Kontakt</a></li>
       </ul>
     </nav>
