@@ -32,6 +32,9 @@ export class ProductListComponent {
   }
 
   delete() {
+    if (this.selected.length == 0)
+      return false;
+
     this.fridge.delete(this.selected.splice(0))
       .subscribe(() => {
         this.notifier.success("Usunięto produkt(y) z lodówki!");
