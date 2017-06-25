@@ -22,7 +22,7 @@ export class FridgeService {
       (error) => this.fridgeContentSource.error(error)
     );
   }
-  
+
   getIngredientQuantity(): Observable<IngredientQuantity[]> {
     return Observable.of(IngredientQuantityMock);
   }

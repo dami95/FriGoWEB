@@ -65,6 +65,9 @@ export class ApiService {
         body = this.toCamel(body);
         return body;
       }).catch(error => {
+        if(error.status === 401) {
+          this.userService.unauthorized();
+        }
         let message: string = "Błąd";
         try {
           message = error.json().error_description;
@@ -111,6 +114,7 @@ export class ApiService {
   getUrl(endpoint: string) {
     return [environment.apiUrl, endpoint].join('/')
   }
+
   getHeaders() {
     let user = this.userService.authHeaders.toJSON();
     return {header: 'Authorization', value: user.Authorization[0]}

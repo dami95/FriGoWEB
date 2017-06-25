@@ -3,13 +3,16 @@ import { Headers } from '@angular/http';
 import { LoginModel } from '../shared/models/account/login.model';
 import { LoggedInResponse } from '../shared/models/account/logged-in.response';
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class UserService {
   authHeaders = new Headers();
   private _user: string;
 
-  constructor() {
+  constructor(
+    private router: Router
+  ) {
     const token = localStorage.getItem('token');
     if(token)
       this.setAuthToken(token);
@@ -42,5 +45,14 @@ export class UserService {
     this.authHeaders = new Headers();
     localStorage.removeItem('token');
     this.user = null;
+  }
+
+  isLoggedIn(): boolean {
+    return this.user != null;
+  }
+
+  unauthorized() {
+    this.logout();
+    this.router.navigate(['/account/login']);
   }
 }
