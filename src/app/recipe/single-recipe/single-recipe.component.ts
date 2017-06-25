@@ -27,7 +27,7 @@ export class SingleRecipeComponent{
   ngOnInit() {
     let recipeID = this.route.snapshot.params['id'];
     this.recipes.getRecipe(recipeID).subscribe(
-      recipe => {this.recipe = recipe; this.recipe.rating = 7},
+      recipe => this.recipe = recipe,
       error => console.log(error)
     );
   }
