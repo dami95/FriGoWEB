@@ -2,7 +2,8 @@ import { Component, OnInit, Input} from '@angular/core';
 import { Comment } from '../../shared/models/comment/comment';
 import { Recipe } from '../../shared/models/recipe/recipe';
 import { RecipeService } from '../recipe.service';
-import { NotifierService } from "../../core/notifier.service";
+import { NotifierService } from '../../core/notifier.service';
+import { UserService } from '../../core/user.service';
 
 @Component({
   selector: 'fg-comment-tile',
@@ -22,7 +23,8 @@ export class CommentTileComponent implements OnInit {
 
   constructor(
       private notifier: NotifierService,
-      private recipes: RecipeService
+      private recipes: RecipeService,
+      private userService: UserService
   ) {
   }
 
@@ -31,8 +33,8 @@ export class CommentTileComponent implements OnInit {
     this.editModel = this.comment.text;
   }
 
-  ifCommentEditable(comment) {
-    return localStorage.getItem('userName') === comment.user.userName;
+  isCommentEditable(comment) {
+    return this.userService.user === comment.user.userName;
   }
 
   removeComment() {

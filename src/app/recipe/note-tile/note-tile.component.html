@@ -5,7 +5,7 @@
 
     <textarea *ngIf="isEditing" [(ngModel)]="editModel" name="note-area" id="note-area" class="notes_note-area"></textarea>
 
-    <div class="notes__note-controls" *ngIf="ifNotesEditable()">
+    <div class="notes__note-controls" *ngIf="isNotesEditable()">
         <span (click)="removeNote()" *ngIf="!isEditing">
           <i class="fa fa-trash"></i>
       </span>

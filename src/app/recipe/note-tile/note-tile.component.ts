@@ -1,7 +1,8 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { Recipe } from '../../shared/models/recipe/recipe';
 import { RecipeService } from '../recipe.service';
-import { NotifierService } from "../../core/notifier.service";
+import { NotifierService } from '../../core/notifier.service';
+import { UserService } from '../../core/user.service';
 import { Note } from '../../shared/models/note/note';
 
 @Component({
@@ -22,7 +23,8 @@ export class NoteTileComponent implements OnInit {
 
   constructor(
     private recipes: RecipeService,
-    private notifier: NotifierService
+    private notifier: NotifierService,
+    private userService: UserService
   ) {
   }
 
@@ -31,9 +33,9 @@ export class NoteTileComponent implements OnInit {
     this.editModel = this.note.note;
   }
 
-  ifNotesEditable() {
-    return localStorage.getItem('userName') === this.recipe.user.userName;
-  };
+  isNotesEditable() {
+    return this.userService.user === this.recipe.user.userName;
+  }
 
   removeNote() {
     if(confirm('Czy na pewno chcesz usunąć komentarz?')) {

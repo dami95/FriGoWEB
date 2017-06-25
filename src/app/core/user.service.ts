@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class UserService {
   authHeaders = new Headers();
+  private _user: string;
 
   constructor() {
     const token = localStorage.getItem('token');
@@ -16,7 +17,7 @@ export class UserService {
 
   onLoggedIn(loggedInResponse: LoggedInResponse) {
     this.setAuthToken(loggedInResponse.access_token);
-    this.setUser(loggedInResponse.userName);
+    this.user = loggedInResponse.userName;
   }
 
   setAuthToken(token: string) {
@@ -24,13 +25,22 @@ export class UserService {
     localStorage.setItem('token', token);
   }
 
-  setUser(userName: string) {
-    localStorage.setItem('userName', userName);
+  set user(userName: string) {
+    if(!userName)
+      localStorage.removeItem('userName');
+    else
+      localStorage.setItem('userName', userName);
+  }
+
+  get user(): string {
+    if(!this._user)
+      this._user = localStorage.getItem('userName');
+    return this._user;
   }
 
   logout() {
     this.authHeaders = new Headers();
     localStorage.removeItem('token');
-    localStorage.removeItem('userName');
+    this.user = null;
   }
 }
