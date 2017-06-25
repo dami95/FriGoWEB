@@ -35,13 +35,14 @@ export class FridgeService {
 
   delete(toDelete: IngredientQuantity[]): Observable<null> {
     if(toDelete && toDelete.length > 0) {
-      let observable = this.api.delete(endpoints.ingredientQuantity + '/' + toDelete[0].id);
-      for(let i = 0; i < toDelete.length - 1; i++) {
-        observable = observable.flatMap(
-          () => this.api.delete(endpoints.ingredientQuantity + '/' + toDelete[i + 1].id)
+      let observable = this.api
+        .delete(endpoints.ingredientQuantity + '/' + toDelete[0].id);
+      for(let i = 1; i < toDelete.length; i++) {
+        observable = observable.merge(
+          this.api.delete(endpoints.ingredientQuantity + '/' + toDelete[i].id)
         );
       }
-      return observable.do(() => this.fetchFridgeContent());
+      return observable.finally(() => this.fetchFridgeContent()).last();
     } else {
       return Observable.of(null);
     }
