@@ -82,4 +82,8 @@ export class SingleRecipeComponent{
 
     }
   }
+
+  share() {
+    window.open('https://www.facebook.com/sharer.php?u='+window.location, 'Udostępnij', 'width=500,height=400,resizable=true');
+  }
 }
