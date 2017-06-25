@@ -23,6 +23,7 @@ export class Recipe {
   static getIntStars(rating: number): number[] {
     if(typeof rating !== 'number')
       return new Array(5).fill(0);
+    rating = Math.round(rating);
     return [
       ...Array(rating).fill(true),
       ...Array(10-rating).fill(false)
