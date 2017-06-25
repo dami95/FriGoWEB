@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Recipe } from '../shared/models/recipe/recipe';
 import { Tag } from '../shared/models/tag';
 import { Observable } from 'rxjs/Observable';
-import { RecipesMock } from './recipes.mock';
 import { TagsMock } from './tags.mock';
 import { ApiService } from '../core/api.service';
 import { endpoints } from '../shared/endpoints';
