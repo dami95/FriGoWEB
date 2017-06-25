@@ -28,8 +28,10 @@ export class CookbookComponent implements OnInit {
 
     this.cookbook.getRecipes().subscribe(
       recipes => {
-        if(recipes.length === 0) this.loadingMsg = "Brak przepisów...";
-        this.recipes = recipes;
+        if(!recipes || !recipes.length)
+          this.loadingMsg = "Brak przepisów...";
+        else
+          this.recipes = recipes;
       },
       error => {
         this.notifier.error('Błąd przy wczytywaniu przepisów...');
