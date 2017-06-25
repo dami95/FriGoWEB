@@ -33,6 +33,7 @@ export class UserService {
       localStorage.removeItem('userName');
     else
       localStorage.setItem('userName', userName);
+    this._user = userName;
   }
 
   get user(): string {
