@@ -15,12 +15,15 @@
         </div>
         <div class="o-form__form-item">
           <label class="o-form__label" for="password">Hasło:</label>
-          <input class="o-form__input" id="password" type="password" name="password" [(ngModel)]="registerModel.password" required minlength="10" maxlength="100">
+          <input #password="ngModel" class="o-form__input" id="password" type="password" name="password" [(ngModel)]="registerModel.password" required minlength="10" maxlength="100">
         </div>
         <div class="o-form__form-item">
           <label class="o-form__label" for="password">Potwierdź hasło:</label>
-          <input class="o-form__input" id="confirmPassword" type="password" name="confirmPassword" [(ngModel)]="registerModel.confirmPassword" required minlength="10" maxlength="100">
+          <input #confirmPassword="ngModel" class="o-form__input" id="confirmPassword" type="password" name="confirmPassword" [(ngModel)]="registerModel.confirmPassword" required minlength="10" maxlength="100">
         </div>
+
+        <p class="o-form__text-error" *ngIf="password.valid && confirmPassword.valid && registerModel.password != registerModel.confirmPassword">Hasła muszą być takie same</p>
+
         <input type="submit" value="Zarejestruj się" class="o-form__hiddenSubmit" />
       </form>
     </div>
@@ -28,7 +31,7 @@
     <div class="o-btn-wrapper">
       <button routerLink="/account/login" class="o-btn">Zaloguj się</button>
 
-      <button (click)="register()" class="o-btn o-btn--color o-btn--right" [(disabled)]="!registerForm.form.valid">Zarejestruj się</button>
+      <button (click)="register()" class="o-btn o-btn--color o-btn--right" [(disabled)]="!registerForm.form.valid || registerModel.password != registerModel.confirmPassword">Zarejestruj się</button>
     </div>
   </div>
 </div>
