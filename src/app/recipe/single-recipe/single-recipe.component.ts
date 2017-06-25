@@ -20,14 +20,20 @@ export class SingleRecipeComponent{
     private recipes: RecipeService,
     private notifier: NotifierService
   ) {
-    this.userRating = new Array(5).fill(false);
+    this.userRating = new Array(5).fill(0);
     this.rated = false;
   }
 
   ngOnInit() {
     let recipeID = this.route.snapshot.params['id'];
     this.recipes.getRecipe(recipeID).subscribe(
-      recipe => this.recipe = recipe,
+      recipe => {
+        this.recipe = recipe
+        if(recipe.userRating) {
+          this.rated = true;
+          this.userRating = Recipe.getIntStars(recipe.userRating);
+        }
+      },
       error => console.log(error)
     );
   }
@@ -45,10 +51,7 @@ export class SingleRecipeComponent{
   };
 
   get stars(): number[] {
-    if(this.recipe)
-      return Recipe.getIntStars(this.recipe.rating);
-    else
-      return new Array(10).fill(false);
+    return Recipe.getIntStars(this.recipe.rating);
   }
 
   //@TODO jak będą notatki dodane do modelu
@@ -62,24 +65,18 @@ export class SingleRecipeComponent{
   // }
 
   rate(i) {
-    if(this.rated === false) {
-      let rating = (i+1)*2;
-      let self = this;
+    let rating = (i+1)*2;
+    let self = this;
 
-      this.recipes.rate(this.recipe.id, { "Rate": rating }).subscribe(
-        response => {
-          self.notifier.success('Dziękujemy za ocenę przepisu');
-          self.userRating = [
-            ...Array(rating).fill(true),
-            ...Array(5 - rating).fill(false)
-          ];
-          self.rated = true;
-        },
-        error => {
-          self.notifier.error('Nie udało sie przesłać Twojej oceny');
-        }
-      )
-
-    }
+    this.recipes.rate(this.recipe.id, { "Rate": rating }).subscribe(
+      response => {
+        self.notifier.success('Dziękujemy za ocenę przepisu');
+        self.userRating = Recipe.getIntStars(rating);
+        self.rated = true;
+      },
+      error => {
+        self.notifier.error('Nie udało sie przesłać Twojej oceny');
+      }
+    )
   }
 }

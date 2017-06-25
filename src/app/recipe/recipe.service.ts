@@ -55,7 +55,7 @@ export class RecipeService {
 
     rate(id, rateRecipe) : Observable<number> {
         return this.api.put(
-            endpoints.rate + `/${id}`,
+            endpoints.rate + `?recipeId=${id}`,
             rateRecipe
         );
     }
