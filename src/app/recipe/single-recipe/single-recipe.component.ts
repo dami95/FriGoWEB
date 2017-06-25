@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../../shared/models/recipe/recipe';
+import { IngredientQuantity } from '../../shared/models/ingredient-quantity/ingredient-quantity';
 import { Note } from '../../shared/models/note/note';
 import { RecipeService } from '../recipe.service';
 import { ActivatedRoute } from "@angular/router";
@@ -78,5 +79,11 @@ export class SingleRecipeComponent{
         self.notifier.error('Nie udało sie przesłać Twojej oceny');
       }
     )
+  }
+
+  missing(ingredientQuantity: IngredientQuantity): number {
+    return this.recipe.missingIngredientQuantities
+      .filter(iq => iq.ingredient.id == ingredientQuantity.ingredient.id)
+      .reduce((prev, curr) => prev += curr.quantity, 0);
   }
 }

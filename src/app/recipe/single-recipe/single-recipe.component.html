@@ -34,8 +34,12 @@
         <div class="single-recipe__ingredients">
           <span>Składniki</span>
           <ul *ngIf="recipe.ingredientQuantities">
-            <li *ngFor="let ingredientQuantity of recipe.ingredientQuantities">
+            <li *ngFor="let ingredientQuantity of recipe.ingredientQuantities"
+              [ngClass]="{'missing': missing(ingredientQuantity) > 0}">
               <span>{{ingredientQuantity.ingredient.name}}</span>{{ingredientQuantity.quantity}}
+              <ng-container *ngIf="missing(ingredientQuantity)">
+                [-{{missing(ingredientQuantity)}}]
+              </ng-container>
               ({{ingredientQuantity.ingredient.unit.name}})
             </li>
           </ul>
