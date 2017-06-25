@@ -39,15 +39,8 @@ export class SingleRecipeComponent{
   }
 
   get getAvailableIngredientsRatio(): string {
-    let available = this.recipe.ingredientQuantities;
-    let missing = this.recipe.missingIngredientQuantities;
-
-    if(available && missing){
-      let ratio = available.length / (available.length + missing.length);
-
-      return ratio * 100 + '%';
-    }
-    else return 'Brak danych';
+    const fitness = (this.recipe.fitness * 100).toPrecision(4);
+    return fitness + '%';
   };
 
   get stars(): number[] {
