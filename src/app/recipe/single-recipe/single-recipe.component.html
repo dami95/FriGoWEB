@@ -40,7 +40,7 @@
           </ul>
         </div>
         <div class="single-recipe__photo">
-          <img src="{{recipe.base64Picture ? recipe.base64Picture : ''}}" alt="{{recipe.title}}">
+          <img src="{{recipe.imageUrl ? recipe.imageUrl : ''}}" alt="{{recipe.title}}">
         </div>
         <div class="single-recipe__description">
            {{ recipe.description ? recipe.description : 'Brak danych' }}
