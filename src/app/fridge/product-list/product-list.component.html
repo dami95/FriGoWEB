@@ -1,5 +1,5 @@
 <div class="icons">
-  <i class='fa fa-trash-o' (click)="delete()"></i>
+  <i class='fa fa-trash-o' (click)="delete()" *ngIf="rows.length"></i>
 </div>
  <ngx-datatable
     class="material"

@@ -45,6 +45,16 @@ export class NotifierService {
     }
 
     error(text, fixed = undefined) {
+        if (typeof text === "object") {
+            let body = JSON.parse(text._body);
+            text = '';
+            for (var e in body.ValidationResult.Errors) {
+                console.log(body.ValidationResult.Errors[e]);
+                console.log(body.ValidationResult.Errors[e].ErrorMessage);
+                text += ' ' + body.ValidationResult.Errors[e].ErrorMessage;
+            }
+        }
+
         this.add({type: 'error', text: text, fixed})
     }
 }
