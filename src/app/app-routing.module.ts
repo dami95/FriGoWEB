@@ -30,8 +30,7 @@ export const routes: Routes = [
   },
   {
     path: 'cookbook',
-    loadChildren: './cookbook/cookbook.module#CookbookModule',
-    canActivate: [ LoggedInGuard ]
+    loadChildren: './cookbook/cookbook.module#CookbookModule'
   },
   {
     path: 'recipe',
