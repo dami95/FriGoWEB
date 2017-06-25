@@ -116,7 +116,7 @@
             display: flex
             flex-wrap: wrap
     
-    label
+    label, span
         font-size: 20px
 
 .add-recipe__ingredients-add-list
@@ -133,7 +133,10 @@
         display: inline-block
         width: 65px
     input
-        font-size: 14px 
+        font-size: 14px
+
+    &--middle
+        margin-left: 25px
 
     @media screen and (max-width: 500px)
         &
@@ -153,29 +156,30 @@
     align-items: center
 
     .add-recipe__ingredient-btn
-        width: 28px
-        height: 28px
+        width: 26px
+        height: 26px
+        line-height: 26px
         display: inline-block
         text-align: center
-        font-size: 17px
-        border-radius: 14px
+        font-size: 14px
+        border-radius: 100%
         border: none
         color: #FFF
+        margin-right: 5px
 
         &.ingredient-add-btn
             background-color: #23B740
 
         &.ingredient-remove-btn
-            color: #6e6e6e
-            background-color: transparent
-            &:hover
-                background-color: #b82323
-                color: #FFF
+            background-color: #b82323
 
     @media screen and (max-width: 500px)
         margin:  0 auto
 
 .add-recipe__photo-wrapper
+    .drag-box-message
+        display: none
+
     @media screen and (max-width: 500px)
         &
             margin: 0 auto
@@ -208,3 +212,7 @@
 .add-recipe__btn-wrapper-bottom
     width: 40%
     margin: 25px auto 10px auto;
+    text-align: center
+
+    .o-btn
+        display: inline-block;

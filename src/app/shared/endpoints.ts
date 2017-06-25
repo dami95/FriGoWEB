@@ -9,5 +9,6 @@ export const endpoints = {
   tags: 'Tag',
   notes: 'RecipeNote',
   comments: 'Comment',
-  rate: 'Rate'
+  rate: 'Rate',
+  image: 'Image'
 }

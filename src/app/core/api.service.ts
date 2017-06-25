@@ -107,4 +107,12 @@ export class ApiService {
     }
     return newObject;
   }
+
+  getUrl(endpoint: string) {
+    return [environment.apiUrl, endpoint].join('/')
+  }
+  getHeaders() {
+    let user = this.userService.authHeaders.toJSON();
+    return {header: 'Authorization', value: user.Authorization[0]}
+  }
 }
