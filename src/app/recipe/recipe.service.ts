@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Recipe } from '../shared/models/recipe/recipe';
 import { CreateRecipe } from '../shared/models/recipe/new-recipe';
 import { Observable } from 'rxjs/Observable';
-import { RecipesMock } from '../cookbook/recipes.mock';
 import { endpoints } from '../shared/endpoints';
 import { ApiService } from '../core/api.service';
 import { Note } from '../shared/models/note/note';
