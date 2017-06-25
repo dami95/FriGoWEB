@@ -40,6 +40,13 @@ export class RecipeService {
     );
   }
 
+  addNote(note) : Observable<Note> {
+    return this.api.post(
+      endpoints.notes,
+      note
+    );
+  }
+
   removeComment(id) : Observable<string> {
     return this.api.delete(
       endpoints.comments + `/${id}`

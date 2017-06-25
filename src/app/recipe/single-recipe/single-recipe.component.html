@@ -62,11 +62,11 @@
       </div>
 
       <div class="o-btn-wrapper single-recipe__btn-wrapper">
-        <a href="" class="o-btn o-btn--color">Dodaj notatkę</a>
+        <a class="o-btn o-btn--color" (click)="addNote()">Dodaj notatkę</a>
         <a href="" class="o-btn">Udostępnij</a>
       </div>
 
-      <fg-notes [recipe]="recipe"></fg-notes>
+      <fg-notes [recipe]="recipe" [(notesOpen)]="notesOpen"></fg-notes>
 
       <fg-comments [recipe]="recipe"></fg-comments>
 

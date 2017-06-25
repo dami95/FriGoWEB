@@ -1,5 +1,6 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Recipe } from '../../shared/models/recipe/recipe';
+import { Note } from '../../shared/models/note/note';
 @Component({
   selector: 'fg-notes',
   templateUrl: './notes.component.html',
@@ -8,8 +9,10 @@ import { Recipe } from '../../shared/models/recipe/recipe';
 export class NotesComponent implements OnInit {
   @Input()
   recipe: Recipe;
-
+  @Input()
   notesOpen: boolean;
+  @Output()
+  notesOpenChange = new EventEmitter<boolean>();
 
   constructor() {
     this.notesOpen = false;
@@ -20,7 +23,6 @@ export class NotesComponent implements OnInit {
 
   changeNotesState() {
     this.notesOpen = !this.notesOpen;
+    this.notesOpenChange.emit(this.notesOpen);
   }
-
-
 }
