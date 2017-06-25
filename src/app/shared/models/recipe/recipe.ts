@@ -13,9 +13,21 @@ export class Recipe {
   notes?: Note[];
   tags?: Tag[];
   user?: UserStub;
-  base64Picture?: string;
+  imageUrl?: string;
   rating?: number;
   createdAt?: Date;
   fitness?: number;
   missingIngredientQuantities?: IngredientQuantity[];
+
+  static getIntStars(rating: number): number[] {
+    return [
+      ...Array(rating).fill(true),
+      ...Array(10-rating).fill(false)
+    ].reduce((previous, current, index, array) => {
+      if(!previous) previous = [];
+      if(index % 2 == 0)
+        previous.push(current + array[index + 1])
+      return previous;
+    }, []);
+  }
 }

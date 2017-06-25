@@ -1,65 +1,70 @@
-<div class="o-content-wrapper">
-    <div class="o-centered">
-        <div class="single-recipe">
-            <div class="single-recipe__head">
-                <div class="single-recipe__head__description">
-                    <h1 class="o-title o-title--underline">{{recipe.title ? recipe.title : 'Brak danych'}}</h1>
-                    <div class="single-recipe__details">
-                        <span class="single-recipe__details__rating single-recipe__details__item o-rating">
-                            <span>Ocena:</span>
-                            <ul>
-                                <li *ngFor="let star of stars">
-          <i class="fa" [ngClass]="{'fa-star': star, 'fa-star-o': !star}"></i>
-        </li>
-                            </ul>
-                        </span>
-                        <span class="single-recipe__details__item">
-                            <span>Procent składników:</span>{{ getAvailableIngredientsRatio }}
-                        </span>
-                    </div>
-                </div>
-
-                <div class="o-btn-wrapper single-recipe__head__btn-wrapper">
-                    <a routerLink="/recipe/create" class="o-btn o-btn--color">Edytuj przepis</a>
-                    <a href="" class="o-btn">Idź do sklepu</a>
-                </div>
-            </div>
-
-            <div class="single-recipe__about">
-                <div class="single-recipe__ingredients">
-                    <span>Składniki</span>
-                    <ul *ngIf="recipe.ingredientQuantities">
-                        <li *ngFor="let ingredientQuantity of recipe.ingredientQuantities">
-                            <span>{{ingredientQuantity.ingredient.name}}</span>{{ingredientQuantity.quantity}}
-                        </li>
-                    </ul>
-                </div>
-                <div class="single-recipe__photo">
-                    <img src="{{recipe.base64Picture ? recipe.base64Picture : ''}}" alt="{{recipe.title}}">
-                </div>
-                <div class="single-recipe__description">
-                   {{ recipe.description ? recipe.description : 'Brak danych' }}
-                </div>
-
-                <div class="single-recipe__rate o-rating">
-                    <span>Oceń przepis:</span>
-                    <ul [ngClass]="{'rated': rated}">
-                        <li *ngFor="let star of userRating; let i = index" aria-selected="true">
-                            <i class="fa" [ngClass]="{'fa-star': star, 'fa-star-o': !star}" (click)="rate(i)"></i>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="o-btn-wrapper single-recipe__btn-wrapper">
-                <a href="" class="o-btn o-btn--color">Dodaj notatkę</a>
-                <a href="" class="o-btn">Udostępnij</a>
-            </div>
-
-            <fg-notes [recipe]="recipe"></fg-notes>
-
-            <fg-comments [recipe]="recipe"></fg-comments>
-
+<div class="o-content-wrapper" *ngIf="recipe">
+  <div class="o-centered">
+    <div class="single-recipe">
+      <div class="single-recipe__head">
+        <div class="single-recipe__head__description">
+          <h1 class="o-title o-title--underline">{{recipe.title ? recipe.title : 'Brak danych'}}</h1>
+          <div class="single-recipe__details">
+            <span class="single-recipe__details__rating single-recipe__details__item o-rating">
+              <span>Ocena:</span>
+              <ul>
+                <li *ngFor="let star of stars">
+                  <i class="fa" 
+                    [ngClass]="{
+                      'fa-star': star == 2,
+                      'fa-star-half-o': star == 1,
+                      'fa-star-o': star == 0
+                    }"></i>
+                </li>
+              </ul>
+            </span>
+            <span class="single-recipe__details__item">
+              <span>Procent składników:</span>{{ getAvailableIngredientsRatio }}
+            </span>
+          </div>
         </div>
+
+        <div class="o-btn-wrapper single-recipe__head__btn-wrapper">
+          <a routerLink="/recipe/create" class="o-btn o-btn--color">Edytuj przepis</a>
+          <a href="" class="o-btn">Idź do sklepu</a>
+        </div>
+      </div>
+
+      <div class="single-recipe__about">
+        <div class="single-recipe__ingredients">
+          <span>Składniki</span>
+          <ul *ngIf="recipe.ingredientQuantities">
+            <li *ngFor="let ingredientQuantity of recipe.ingredientQuantities">
+              <span>{{ingredientQuantity.ingredient.name}}</span>{{ingredientQuantity.quantity}}
+            </li>
+          </ul>
+        </div>
+        <div class="single-recipe__photo">
+          <img src="{{recipe.base64Picture ? recipe.base64Picture : ''}}" alt="{{recipe.title}}">
+        </div>
+        <div class="single-recipe__description">
+           {{ recipe.description ? recipe.description : 'Brak danych' }}
+        </div>
+
+        <div class="single-recipe__rate o-rating">
+          <span>Oceń przepis:</span>
+          <ul [ngClass]="{'rated': rated}">
+            <li *ngFor="let star of userRating; let i = index" aria-selected="true">
+              <i class="fa" [ngClass]="{'fa-star': star, 'fa-star-o': !star}" (click)="rate(i)"></i>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="o-btn-wrapper single-recipe__btn-wrapper">
+        <a href="" class="o-btn o-btn--color">Dodaj notatkę</a>
+        <a href="" class="o-btn">Udostępnij</a>
+      </div>
+
+      <fg-notes [recipe]="recipe"></fg-notes>
+
+      <fg-comments [recipe]="recipe"></fg-comments>
+
     </div>
+  </div>
 </div>
