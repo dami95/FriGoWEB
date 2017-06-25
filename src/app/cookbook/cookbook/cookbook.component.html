@@ -12,7 +12,7 @@
                     <span class="cookbook__span-select">
                         <select [(ngModel)]="findRecipeSelect">
                             <option value="">Wszystkie</option>
-                            <option *ngFor="let tag of tags" [value]="tag.name">
+                            <option *ngFor="let tag of tags" [value]="tag.id">
                                 {{ tag.name }}
                             </option>
                         </select>

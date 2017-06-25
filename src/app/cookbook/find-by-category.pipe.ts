@@ -9,15 +9,7 @@ export class FindRecipeByCategory implements PipeTransform {
     if (!value) {
       return items;
     } else {
-      return items.filter(item => {
-        if (item.tags && item.tags.length !== 0) {
-          let hasTag = false;
-          item.tags.forEach(tag => {
-            if (value === tag.name) hasTag = true;
-          });
-          return hasTag;
-        }
-      })
+      return items.filter(item => item.tags.map(tag => tag.id).indexOf(value) > -1);
     }
   }
 }
