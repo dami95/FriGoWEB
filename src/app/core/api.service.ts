@@ -70,7 +70,7 @@ export class ApiService {
         }
         let message: string = "Błąd";
         try {
-          message = error.json().error_description;
+          message = error;
         } catch(e) { }
         return Observable.throw(message);
       });
