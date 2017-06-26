@@ -18,8 +18,11 @@ export class Recipe {
   createdAt?: Date;
   fitness?: number;
   missingIngredientQuantities?: IngredientQuantity[];
+  userRating?: number;
 
   static getIntStars(rating: number): number[] {
+    if(typeof rating !== 'number')
+      return new Array(5).fill(0);
     return [
       ...Array(rating).fill(true),
       ...Array(10-rating).fill(false)

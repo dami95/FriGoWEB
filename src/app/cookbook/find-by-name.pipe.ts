@@ -9,9 +9,9 @@ export class FindRecipeByName implements PipeTransform {
     if (!value) {
       return items;
     } else {
-      return items.filter(item => {
-        if (item.title !== undefined && item.title.indexOf(value) !== -1) return true;
-      })
+      return items.filter(
+          item => item.title !== undefined && item.title.indexOf(value) !== -1
+        );
     }
   }
 }

@@ -9,7 +9,7 @@
               <span>Ocena:</span>
               <ul>
                 <li *ngFor="let star of stars">
-                  <i class="fa" 
+                  <i class="fa"
                     [ngClass]="{
                       'fa-star': star == 2,
                       'fa-star-half-o': star == 1,
@@ -36,11 +36,12 @@
           <ul *ngIf="recipe.ingredientQuantities">
             <li *ngFor="let ingredientQuantity of recipe.ingredientQuantities">
               <span>{{ingredientQuantity.ingredient.name}}</span>{{ingredientQuantity.quantity}}
+              ({{ingredientQuantity.ingredient.unit.name}})
             </li>
           </ul>
         </div>
         <div class="single-recipe__photo">
-          <img src="{{recipe.base64Picture ? recipe.base64Picture : ''}}" alt="{{recipe.title}}">
+          <img src="{{recipe.imageUrl ? recipe.imageUrl : ''}}" alt="{{recipe.title}}">
         </div>
         <div class="single-recipe__description">
            {{ recipe.description ? recipe.description : 'Brak danych' }}
@@ -50,7 +51,11 @@
           <span>Oceń przepis:</span>
           <ul [ngClass]="{'rated': rated}">
             <li *ngFor="let star of userRating; let i = index" aria-selected="true">
-              <i class="fa" [ngClass]="{'fa-star': star, 'fa-star-o': !star}" (click)="rate(i)"></i>
+              <i class="fa" [ngClass]="{
+                'fa-star': star == 2,
+                'fa-star-half-o': star == 1,
+                'fa-star-o': star == 0
+              }" (click)="rate(i)"></i>
             </li>
           </ul>
         </div>
