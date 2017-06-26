@@ -11,6 +11,7 @@ import { NotesComponent } from './notes/notes.component';
 import { CommentsComponent } from './comments/comments.component';
 import { CommentTileComponent } from './comment-tile/comment-tile.component';
 import { CookbookService } from '../cookbook/cookbook.service';
+import { SafePipe } from './safe.pipe';
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import { CookbookService } from '../cookbook/cookbook.service';
     RecipeRoutingModule,
     ImageUploadModule
   ],
-  declarations: [ SingleRecipeComponent, CreateComponent, NoteTileComponent, NotesComponent, CommentsComponent, CommentTileComponent ],
+  declarations: [ SingleRecipeComponent, CreateComponent, NoteTileComponent, NotesComponent, CommentsComponent, CommentTileComponent, SafePipe ],
   exports: [ CreateComponent ],
   providers: [ RecipeService, CookbookService ]
 })

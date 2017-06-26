@@ -57,7 +57,7 @@
               <!--https://www.npmjs.com/package/angular2-image-upload-->
             </div>
             <div *ngIf="recipe.imageUrl">
-              <img src="{{ recipe.imageUrl }}" alt="Zdjęcie przepisu">
+              <img [src]='recipe.imageUrl | safe' alt="Zdjęcie przepisu">
             </div>
           </div>
         </div>
