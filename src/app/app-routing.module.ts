@@ -12,8 +12,7 @@ export const routes: Routes = [
   },
   {
     path: 'recipe',
-    loadChildren: './recipe/recipe.module#RecipeModule',
-    canActivate: [ LoggedInGuard ]
+    loadChildren: './recipe/recipe.module#RecipeModule'
   },
   {
     path: 'account',

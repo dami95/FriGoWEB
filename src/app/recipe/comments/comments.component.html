@@ -3,7 +3,7 @@
     Komentarze <i class="fa fa-caret-up" [ngClass]="{'open': commentsOpen }"></i>
   </h2>
   <div class="comments__list dropdown__list" [ngClass]="{'open': commentsOpen }">
-    <div *ngIf="!recipe.comments">Brak komentarzy...</div>
+    <div *ngIf="!recipe.comments || !recipe.comments.length">Brak komentarzy...</div>
     <fg-comment-tile
       *ngFor="let comment of recipe.comments; let i = index"
       [comment] = "comment"
@@ -12,6 +12,6 @@
       [isNew] = '!comment?.text?.length'
     ></fg-comment-tile>
 
-    <a class="o-btn o-btn--color" (click)="addComment()">Dodaj komentarz</a>
+    <a class="o-btn o-btn--color" (click)="addComment()" *ngIf="userService.isLoggedIn()">Dodaj komentarz</a>
   </div>
 </div>

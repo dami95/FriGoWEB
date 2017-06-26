@@ -23,11 +23,6 @@
             </span>
           </div>
         </div>
-
-        <div class="o-btn-wrapper single-recipe__head__btn-wrapper">
-          <a routerLink="/recipe/create" class="o-btn o-btn--color">Edytuj przepis</a>
-          <a href="" class="o-btn">Idź do sklepu</a>
-        </div>
       </div>
 
       <div class="single-recipe__about">
@@ -51,7 +46,7 @@
            {{ recipe.description ? recipe.description : 'Brak danych' }}
         </div>
 
-        <div class="single-recipe__rate o-rating">
+        <div class="single-recipe__rate o-rating" *ngIf="loggedin">
           <span>Oceń przepis:</span>
           <ul [ngClass]="{'rated': rated}">
             <li *ngFor="let star of userRating; let i = index" aria-selected="true">
@@ -66,11 +61,11 @@
       </div>
 
       <div class="o-btn-wrapper single-recipe__btn-wrapper">
-        <a class="o-btn o-btn--color" (click)="addNote()">Dodaj notatkę</a>
-        <a href="" class="o-btn">Udostępnij</a>
+        <a class="o-btn o-btn--color" (click)="addNote()" *ngIf="loggedin">Dodaj notatkę</a>
+        <a href="" class="o-btn" [ngClass]="{'button-center': !loggedin}">Udostępnij</a>
       </div>
 
-      <fg-notes [recipe]="recipe" [(notesOpen)]="notesOpen"></fg-notes>
+      <fg-notes [recipe]="recipe" [(notesOpen)]="notesOpen" *ngIf="loggedin"></fg-notes>
 
       <fg-comments [recipe]="recipe"></fg-comments>
 

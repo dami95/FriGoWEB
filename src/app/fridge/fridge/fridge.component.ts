@@ -15,12 +15,16 @@ import { NewProductComponent } from './../new-product/new-product.component';
 export class FridgeComponent implements OnInit {
   public popupVisibility = false;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() { }
 
   togglePopupVisibility() {
     this.popupVisibility = !this.popupVisibility;
+  }
+
+  propose() {
+    this.router.navigate(['/cookbook']);
   }
 
 }

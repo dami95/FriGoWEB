@@ -5,6 +5,7 @@ import { Note } from '../../shared/models/note/note';
 import { RecipeService } from '../recipe.service';
 import { ActivatedRoute } from "@angular/router";
 import { NotifierService } from "../../core/notifier.service";
+import { UserService } from '../../core/user.service';
 import { element } from "protractor";
 
 @Component({
@@ -21,7 +22,8 @@ export class SingleRecipeComponent{
   constructor(
     private route: ActivatedRoute,
     private recipes: RecipeService,
-    private notifier: NotifierService
+    private notifier: NotifierService,
+    private userService: UserService
   ) {
     this.userRating = new Array(5).fill(0);
     this.rated = false;
@@ -85,5 +87,9 @@ export class SingleRecipeComponent{
     return this.recipe.missingIngredientQuantities
       .filter(iq => iq.ingredient.id == ingredientQuantity.ingredient.id)
       .reduce((prev, curr) => prev += curr.quantity, 0);
+  }
+
+  get loggedin() {
+    return this.userService.isLoggedIn();
   }
 }

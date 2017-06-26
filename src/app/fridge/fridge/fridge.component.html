@@ -4,7 +4,7 @@
     <fg-product-list></fg-product-list>
     <div class="o-btn-wrapper">
       <button (click)="togglePopupVisibility()" class="o-btn o-btn--color">Dodaj produkt</button>
-      <button class="o-btn">Zaproponuj potrawę</button>
+      <button class="o-btn" (click)="propose()">Zaproponuj potrawę</button>
     </div>
   </div>
   <fg-new-product [(visible)]="popupVisibility"></fg-new-product>

@@ -4,6 +4,7 @@ import { Recipe } from '../../shared/models/recipe/recipe';
 import { Tag } from '../../shared/models/tag';
 import { CookbookService } from '../cookbook.service';
 import { NotifierService } from "../../core/notifier.service";
+import { UserService } from '../../core/user.service';
 
 @Component({
   selector: 'fg-cookbook',
@@ -20,7 +21,8 @@ export class CookbookComponent implements OnInit {
   constructor(
     private router: Router,
     private cookbook: CookbookService,
-    private notifier: NotifierService
+    private notifier: NotifierService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -49,5 +51,9 @@ export class CookbookComponent implements OnInit {
 
   onRecipeClick(id: string) {
     this.router.navigate(['/recipe', id]);
+  }
+
+  get loggedin() {
+    return this.userService.isLoggedIn();
   }
 }
