@@ -28,8 +28,8 @@
                 <div class="add-recipe__ingredient-add-box">
                   <label for="add-recipe__add-ingredient-id-{{ in }}">Nazwa:</label>
                   <select name="add-recipe__add-ingredient-id-{{ in }}" id="add-recipe__add-ingredient-id-{{ in }}" class="add-recipe__add-ingredient-id u-mark-validation"
-                      [(ngModel)]="recipe.createIngredientQuantities[in].ingredient" required>
-                    <option *ngFor="let item of ingredients" [ngValue]="item">{{item.name}}</option>
+                      [(ngModel)]="recipe.createIngredientQuantities[in].ingredientId" required>
+                    <option *ngFor="let item of ingredients" [ngValue]="item.id">{{item.name}}</option>
                   </select>
 
                   <!--<input type="text" class="add-recipe__add-ingredient-id" name="add-recipe__add-ingredient-id-{{ in }}" [(ngModel)]="recipe.createIngredientQuantities[in].id" >-->
@@ -37,13 +37,13 @@
                 <div class="add-recipe__ingredient-add-box add-recipe__ingredient-add-box--middle">
                   <label for="add-recipe__add-ingredient-amount-{{ in }}">Ilość:</label>
                   <input type="number" class="add-recipe__add-ingredient-amount o-form__input" id="add-recipe__add-ingredient-amount-{{ in }}" name="add-recipe__add-ingredient-amount-{{ in }}" [(ngModel)]="recipe.createIngredientQuantities[in].quantity" required min="0">
-                  <span *ngIf="recipe.createIngredientQuantities[in].ingredient">{{ recipe.createIngredientQuantities[in].ingredient.unit.name }}</span>
+                  <span *ngIf="recipe.createIngredientQuantities[in].ingredientId">{{ getUnitName(recipe.createIngredientQuantities[in].ingredientId) }}</span>
                 </div>
                 <div class="add-recipe__ingredient-add-buttons">
-                  <button (click)="addIngredient(in+1);" class="add-recipe__ingredient-btn ingredient-add-btn">
+                  <button type="button" (click)="addIngredient(in+1);" class="add-recipe__ingredient-btn ingredient-add-btn">
                     <i class="fa fa-plus" aria-hidden="true"></i>
                   </button>
-                  <button (click)="removeIngredient(in);" class="add-recipe__ingredient-btn ingredient-remove-btn">
+                  <button type="button" (click)="removeIngredient(in);" class="add-recipe__ingredient-btn ingredient-remove-btn">
                     <i class="fa fa-trash" aria-hidden="true"></i>
                   </button>
                 </div>
@@ -57,7 +57,7 @@
               <!--https://www.npmjs.com/package/angular2-image-upload-->
             </div>
             <div *ngIf="recipe.imageUrl">
-              <img src="{{ recipe.imageUrl }}" alt="Zdjęcie przepisu">
+              <img [src]='recipe.imageUrl | safe' alt="Zdjęcie przepisu">
             </div>
           </div>
         </div>
@@ -65,9 +65,6 @@
           <h3>Opis</h3>
           <textarea class="add-recipe__description u-mark-validation" name="description" [(ngModel)]="recipe.description" required></textarea>
         </div>
-      </div>
-      <div class="add-recipe__btn-wrapper-bottom">
-        <button [(disabled)]="!addRecipeForm.form.valid" class="o-btn o-btn--color">Dodaj</button>
       </div>
 
     </form>

@@ -1,9 +1,10 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Comment } from '../../shared/models/comment/comment';
 import { Recipe } from '../../shared/models/recipe/recipe';
 import { RecipeService } from '../recipe.service';
 import { NotifierService } from '../../core/notifier.service';
 import { UserService } from '../../core/user.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'fg-comment-tile',
@@ -17,6 +18,8 @@ export class CommentTileComponent implements OnInit {
     recipe: Recipe;
   @Input()
     commentIndex: number;
+  @Input()
+    isNew: boolean;
 
   isEditing: boolean;
   editModel: string;
@@ -29,12 +32,15 @@ export class CommentTileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isEditing = false;
+    if(this.isNew)
+      this.isEditing = true;
+    else
+      this.isEditing = false;
     this.editModel = this.comment.text;
   }
 
   isCommentEditable(comment) {
-    return this.userService.user === comment.user.userName;
+    return this.isNew || this.userService.user === comment.user.userName;
   }
 
   removeComment() {
@@ -64,11 +70,20 @@ export class CommentTileComponent implements OnInit {
   }
 
   saveComment() {
-    this.recipes.editComment(this.comment.id, { "Text": this.editModel }).subscribe(
+    let action: Observable<any>;
+    if(this.isNew) {
+      action = this.recipes.addComment({ text: this.editModel, recipeId: this.recipe.id});
+    } else {
+      action = this.recipes.editComment(this.comment.id, { "Text": this.editModel })
+    }
+    action.subscribe(
         comment => {
           this.comment = comment;
-          this.notifier.success('Pomyślnie zapisano zmiany w komentarzu');
+          let successText =
+            this.isNew ? 'Pomyślnie zapisano komentarz!' : 'Pomyślnie zapisano zmiany w komentarzu';
+          this.notifier.success(successText);
           this.isEditing = false;
+          this.isNew = false;
         },
         error => {
           this.notifier.error('Wystąpił błąd podczas zapisu zmian w komentarzu');

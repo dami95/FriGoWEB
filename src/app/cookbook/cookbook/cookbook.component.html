@@ -3,9 +3,8 @@
         <div class="cookbook">
             <div class="cookbook__head">
                 <h1 class="o-title o-title--underline">Księga kucharska</h1>
-                <div class="o-btn-wrapper cookbook__btn-wrapper">
-                    <a href="" class="o-btn o-btn--color">Zaproponuj potrawę</a>
-                    <a routerLink="/recipe/create" class="o-btn">Dodaj przepis</a>
+                <div class="o-btn-wrapper cookbook__btn-wrapper" *ngIf="loggedin">
+                    <a routerLink="/recipe/create" class="o-btn add-btn">Dodaj przepis</a>
                 </div>
                 <div class="cookbook__search">
                     <input type="text" [(ngModel)]="findRecipeInput">

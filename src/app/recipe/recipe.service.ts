@@ -14,7 +14,7 @@ export class RecipeService {
     private api: ApiService
   ) { }
 
-  createRecipe(newRecipe): Observable<CreateRecipe> {
+  createRecipe(newRecipe): Observable<Recipe> {
     return this.api.post(
       endpoints.recipes,
       newRecipe
@@ -40,6 +40,13 @@ export class RecipeService {
     );
   }
 
+  addNote(note) : Observable<Note> {
+    return this.api.post(
+      endpoints.notes,
+      note
+    );
+  }
+
   removeComment(id) : Observable<string> {
     return this.api.delete(
       endpoints.comments + `/${id}`
@@ -50,6 +57,13 @@ export class RecipeService {
     return this.api.put(
       endpoints.comments + `/${id}`,
       editComment
+    );
+  }
+
+  addComment(comment) : Observable<Comment> {
+    return this.api.post(
+      endpoints.comments,
+      comment
     );
   }
 

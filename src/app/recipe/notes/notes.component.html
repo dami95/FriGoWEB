@@ -3,12 +3,13 @@
     Notatki <i class="fa fa-caret-up" [ngClass]="{'open': notesOpen }"></i>
   </h2>
   <div class="notes__list dropdown__list" [ngClass]="{'open': notesOpen }">
-    <div *ngIf="!recipe.notes">Brak notatek...</div>
+    <div *ngIf="!recipe.notes || !recipe.notes.length">Brak notatek...</div>
     <fg-note-tile
             *ngFor="let note of recipe.notes; let i = index"
             [note] = 'note'
             [recipe] = 'recipe'
             [noteIndex] = 'i'
+            [isNew] = '!note?.note?.length'
     ></fg-note-tile>
 
   </div>

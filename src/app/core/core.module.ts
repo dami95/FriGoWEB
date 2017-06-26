@@ -3,6 +3,7 @@ import { NgModule,
 
 import { SharedModule } from '../shared/shared.module';
 import { LoggedInGuard } from './logged-in.guard';
+import { NotLoggedInGuard } from './not-logged-in.guard';
 import { NotifierService } from './notifier.service';
 import { HttpModule } from '@angular/http';
 import { User } from '../shared/models/user';
@@ -17,9 +18,10 @@ import { UnitService } from './unit.service';
   exports:      [ ],
   providers:    [
     LoggedInGuard,
+    NotLoggedInGuard,
     NotifierService,
     ApiService,
-    UserService, 
+    UserService,
     IngredientService,
     UnitService
   ]

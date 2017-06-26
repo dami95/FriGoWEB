@@ -4,6 +4,7 @@ import { RecipeService } from '../recipe.service';
 import { NotifierService } from '../../core/notifier.service';
 import { UserService } from '../../core/user.service';
 import { Note } from '../../shared/models/note/note';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'fg-note-tile',
@@ -17,6 +18,8 @@ export class NoteTileComponent implements OnInit {
     note: Note;
   @Input()
     noteIndex: number;
+  @Input()
+    isNew: boolean;
 
   isEditing: boolean;
   editModel: string;
@@ -29,12 +32,15 @@ export class NoteTileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isEditing = false;
+    if(this.isNew)
+      this.isEditing = true;
+    else
+      this.isEditing = false;
     this.editModel = this.note.note;
   }
 
   isNotesEditable() {
-    return this.userService.user === this.recipe.user.userName;
+    return true;
   }
 
   removeNote() {
@@ -56,11 +62,20 @@ export class NoteTileComponent implements OnInit {
   }
 
   saveNote() {
-    this.recipes.editNote(this.note.id, { "Note": this.editModel }).subscribe(
+    let action: Observable<any>;
+    if(this.isNew) {
+      action = this.recipes.addNote({ note: this.editModel, recipeId: this.recipe.id});
+    } else {
+      action = this.recipes.editNote(this.note.id, { "Note": this.editModel })
+    }
+    action.subscribe(
       note => {
         this.note = note;
-        this.notifier.success('Pomyślnie zapisano zmiany w notatce');
+        let successText =
+          this.isNew ? 'Pomyślnie zapisano notatkę!' : 'Pomyślnie zapisano zmiany w notatce';
+        this.notifier.success(successText);
         this.isEditing = false;
+        this.isNew = false;
       },
       error => {
         this.notifier.error('Wystąpił błąd podczas zapisu zmian w notatce');

@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../../shared/models/recipe/recipe';
+import { IngredientQuantity } from '../../shared/models/ingredient-quantity/ingredient-quantity';
+import { Note } from '../../shared/models/note/note';
 import { RecipeService } from '../recipe.service';
 import { ActivatedRoute } from "@angular/router";
 import { NotifierService } from "../../core/notifier.service";
+import { UserService } from '../../core/user.service';
 import { element } from "protractor";
 
 @Component({
@@ -14,11 +17,13 @@ export class SingleRecipeComponent{
   userRating: number[];
   rated: boolean;
   recipe: Recipe;
+  notesOpen = false;
 
   constructor(
     private route: ActivatedRoute,
     private recipes: RecipeService,
-    private notifier: NotifierService
+    private notifier: NotifierService,
+    private userService: UserService
   ) {
     this.userRating = new Array(5).fill(0);
     this.rated = false;
@@ -45,6 +50,11 @@ export class SingleRecipeComponent{
 
   get stars(): number[] {
     return Recipe.getIntStars(this.recipe.rating);
+  }
+
+  addNote() {
+    this.notesOpen = true;
+    this.recipe.notes.push(new Note());
   }
 
   //@TODO jak będą notatki dodane do modelu
@@ -75,5 +85,15 @@ export class SingleRecipeComponent{
 
   share() {
     window.open('https://www.facebook.com/sharer.php?u='+window.location, 'Udostępnij', 'width=500,height=400,resizable=true');
+  }
+
+  missing(ingredientQuantity: IngredientQuantity): number {
+    return this.recipe.missingIngredientQuantities
+      .filter(iq => iq.ingredient.id == ingredientQuantity.ingredient.id)
+      .reduce((prev, curr) => prev += curr.quantity, 0);
+  }
+
+  get loggedin() {
+    return this.userService.isLoggedIn();
   }
 }
