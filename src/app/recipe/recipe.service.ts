@@ -14,7 +14,7 @@ export class RecipeService {
     private api: ApiService
   ) { }
 
-  createRecipe(newRecipe): Observable<CreateRecipe> {
+  createRecipe(newRecipe): Observable<Recipe> {
     return this.api.post(
       endpoints.recipes,
       newRecipe
