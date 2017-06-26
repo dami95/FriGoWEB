@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Recipe } from '../../shared/models/recipe/recipe';
+import { Comment } from '../../shared/models/comment/comment';
+import { UserService } from '../../core/user.service';
 
 @Component({
   selector: 'fg-comments',
@@ -13,7 +15,7 @@ export class CommentsComponent implements OnInit {
   commentsOpen: boolean;
 
 
-  constructor() {
+  constructor(private userService: UserService) {
     this.commentsOpen = false;
   }
 
@@ -23,6 +25,11 @@ export class CommentsComponent implements OnInit {
 
   changeCommentsState() {
     this.commentsOpen = !this.commentsOpen;
+  }
+
+  addComment() {
+    const comment = new Comment();
+    this.recipe.comments.push(new Comment());
   }
 
 }

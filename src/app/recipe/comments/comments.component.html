@@ -9,7 +9,9 @@
       [comment] = "comment"
       [recipe] = "recipe"
       [commentIndex] = "i"
+      [isNew] = '!comment?.text?.length'
     ></fg-comment-tile>
 
+    <a class="o-btn o-btn--color" (click)="addComment()">Dodaj komentarz</a>
   </div>
 </div>

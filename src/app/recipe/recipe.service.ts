@@ -60,6 +60,13 @@ export class RecipeService {
     );
   }
 
+  addComment(comment) : Observable<Comment> {
+    return this.api.post(
+      endpoints.comments,
+      comment
+    );
+  }
+
   rate(id, rateRecipe) : Observable<number> {
     return this.api.put(
       endpoints.rate + `?recipeId=${id}`,
